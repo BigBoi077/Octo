@@ -65,7 +65,6 @@
         android:drawableLeft="@drawable/ic_arrow_forward"
         android:drawableTint="@color/white"
         android:backgroundTint="@color/pale_red"
-        style="@style/Widget.MaterialComponents.TimePicker.ImageButton"
-        />
+        style="@style/Widget.MaterialComponents.TimePicker.ImageButton" />
 
 </LinearLayout>

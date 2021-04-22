@@ -5,4 +5,9 @@
     <string name="action_sign_up">No account ? Sign up here</string>
     <string name="input_username_hint">BoogeymanJace</string>
     <string name="input_password_hint">********</string>
+    <string name="sign_up_title">Sign Up</string>
+    <string name="octo_app_description">Welcome to Octo, you very own personal Magic The Gathering card manager.</string>
+    <string name="input_first_name_hint">Gideon</string>
+    <string name="input_last_name_hint">Jura</string>
+    <string name="input_username_hint_sign_up">JuraOfJustice159</string>
 </resources>

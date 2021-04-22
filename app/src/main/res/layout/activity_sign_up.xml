@@ -1,9 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="32dp"
     tools:context=".views.connexion.SignUpActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_octologoonly"
+        app:tint="@color/main_red" />
+
+    <TextView
+        style="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="sans-serif-condensed"
+        android:gravity="center"
+        android:text="@string/sign_up_title"
+        android:textSize="32sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:padding="8dp"
+        android:text="@string/octo_app_description"
+        android:textAlignment="center" />
+
+    <EditText
+        android:id="@+id/firstNameInput"
+        style="@style/Theme.MaterialComponents.DayNight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:drawablePadding="8dp"
+        android:hint="@string/input_first_name_hint"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/lastNameInput"
+        style="@style/Theme.MaterialComponents.DayNight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:drawablePadding="8dp"
+        android:hint="@string/input_last_name_hint"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/usernameInput"
+        style="@style/Theme.MaterialComponents.DayNight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:drawableStart="@drawable/ic_person_outline"
+        android:drawablePadding="8dp"
+        android:hint="@string/input_username_hint_sign_up"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/passwordInput"
+        style="@style/Theme.MaterialComponents.DayNight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:drawablePadding="8dp"
+        android:drawableStart="@drawable/ic_fingerprint"
+        android:hint="@string/input_password_hint"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/textButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:drawableLeft="@drawable/ic_arrow_forward"
+        android:drawableTint="@color/white"
+        android:backgroundTint="@color/pale_red"
+        style="@style/Widget.MaterialComponents.TimePicker.ImageButton" />
+
+</LinearLayout>
