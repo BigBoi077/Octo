@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="main_red">#C1292E</color>
+    <color name="dark_red">#860003</color>
+    <color name="pale_red">#E54C48</color>
+    <color name="middle_red">#FF6C63</color>
+    <color name="main_pink">#FF8C80</color>
+    <color name="pale_pink">#FFAD9E</color>
+    <color name="main_blue">#235789</color>
+    <color name="dark_blue">#004272</color>
+    <color name="pale_blue">#4A76AB</color>
+    <color name="middle_blue">#6D97CE</color>
+    <color name="ice_blue">#91B9F3</color>
+    <color name="pale_ice_blue">#B5DDFF</color>
+    <color name="main_yellow">#F1D302</color>
+    <color name="black">#020100</color>
+    <color name="white">#FDFFFC</color>
+</resources>

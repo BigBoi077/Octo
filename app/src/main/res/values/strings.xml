@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Octo</string>
+    <string name="log_in_title">Log In</string>
+    <string name="test">test</string>
+    <string name="action_sign_up">No account ? Sign up here</string>
+    <string name="input_username_hint">BoogeymanJace</string>
+    <string name="input_password_hint">********</string>
+</resources>
