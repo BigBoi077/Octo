@@ -13,6 +13,7 @@ class SignUpActivity : ConnexionActivity() {
     }
 
     fun actionSignUp(view: View) {
-
+        val intent = Intent(this, MoreInformationActivity::class.java)
+        startActivity(intent)
     }
 }

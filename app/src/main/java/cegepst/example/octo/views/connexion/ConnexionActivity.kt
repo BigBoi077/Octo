@@ -15,6 +15,6 @@ open class ConnexionActivity : BaseActivity() {
 
     fun userWasLogged(): Boolean {
         // TODO : use app preferences to check user logged
-        return true
+        return false    
     }
 }

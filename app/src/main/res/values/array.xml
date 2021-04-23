@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="guilds">
+        <item>Boros</item>
+        <item>Dimir</item>
+        <item>Izzet</item>
+        <item>Golgari</item>
+        <item>Orzhov</item>
+        <item>Simic</item>
+        <item>Rakdos</item>
+        <item>Celesnya</item>
+        <item>Azorius</item>
+        <item>Gruul</item>
+    </array>
+</resources>

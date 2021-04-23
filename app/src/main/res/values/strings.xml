@@ -11,8 +11,12 @@
     <string name="input_last_name_hint">Jura</string>
     <string name="input_username_hint_sign_up">JuraOfJustice159</string>
     <string name="more_information_title">Tell Us More About You</string>
-    <string name="more_information_question">In the Ravnica blocks, wich guild represents you the most ?</string>
+    <string name="more_information_question_guild">In the Ravnica blocks, which guild represents you the most ?</string>
     <string name="hint_firstname">Firstname</string>
     <string name="hint_lastname">Lastname</string>
     <string name="hint_username">Username</string>
+    <string name="password_hint">*********</string>
+    <string name="octo_logo_description">Octo log</string>
+    <string name="more_information_question_color">Amongst the six colors of Magic, which do you prefer the most  personally ?</string>
+    <string name="colorless_mana_description">Eldrazi</string>
 </resources>

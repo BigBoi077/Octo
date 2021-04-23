@@ -13,15 +13,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="16dp"
         android:src="@drawable/ic_octologoonly"
-        app:tint="@color/main_red" />
+        app:tint="@color/main_red"
+        android:contentDescription="@string/octo_logo_description" />
 
     <TextView
         style="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="16dp"
         android:fontFamily="sans-serif-condensed"
         android:gravity="center"
         android:text="@string/log_in_title"
@@ -46,7 +47,7 @@
         android:layout_marginBottom="24dp"
         android:drawablePadding="8dp"
         android:drawableStart="@drawable/ic_fingerprint"
-        android:hint="@string/input_password_hint"
+        android:hint="@string/password_hint"
         android:inputType="textPassword" />
 
     <TextView
