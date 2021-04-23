@@ -14,9 +14,4 @@ open class BaseActivity : AppCompatActivity() {
     fun removeActionBar() {
         supportActionBar?.hide();
     }
-
-    fun launchNewActivity() {
-        val intent = Intent()
-        startActivity(intent)
-    }
 }
