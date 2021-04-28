@@ -19,4 +19,6 @@
     <string name="octo_logo_description">Octo log</string>
     <string name="more_information_question_color">Amongst the six colors of Magic, which do you prefer the most  personally ?</string>
     <string name="colorless_mana_description">Eldrazi</string>
+    <string name="signUpError">Your sign up information\'s are invalid</string>
+    <string name="usernameTakenError">This username is already taken</string>
 </resources>

@@ -13,7 +13,13 @@ class SignUpActivity : ConnexionActivity() {
     }
 
     fun actionSignUp(view: View) {
-        val intent = Intent(this, MoreInformationActivity::class.java)
-        startActivity(intent)
+        super.getUserInputs()
+        if (super.isValidSignUp()) {
+            super.registerUser()
+            val intent = Intent(this, MoreInformationActivity::class.java)
+            startActivity(intent)
+        } else {
+            alert(super.currentError)
+        }
     }
 }
