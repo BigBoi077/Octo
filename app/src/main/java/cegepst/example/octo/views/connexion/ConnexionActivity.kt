@@ -1,27 +1,32 @@
 package cegepst.example.octo.views.connexion
 
+import android.content.Intent
 import android.os.Bundle
+import androidx.lifecycle.ViewModelProvider
 import cegepst.example.octo.R
 import cegepst.example.octo.models.User
-import cegepst.example.octo.models.UserManager
+import cegepst.example.octo.viewModels.ConnexionViewModel
 import cegepst.example.octo.views.BaseActivity
 import com.google.android.material.textfield.TextInputEditText
 
 open class ConnexionActivity : BaseActivity() {
 
-    internal lateinit var currentError: String
-    private lateinit var signUpError: String
-    private lateinit var usernameTakenError: String
-    private lateinit var userManager: UserManager
+    private lateinit var viewModel: ConnexionViewModel
     private lateinit var userInputs: HashMap<String, String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        this.signUpError = getString(R.string.signUpError)
-        this.usernameTakenError = getString(R.string.usernameTakenError)
-        this.currentError = ""
-        this.userManager = UserManager(super.database)
+        this.viewModel =  ViewModelProvider(this).get(ConnexionViewModel::class.java)
+        this.viewModel.initialize(this)
         this.userInputs = HashMap()
+    }
+
+    fun signUp() {
+        if (isValidSignUp()) {
+            registerUser()
+        } else {
+            alert(viewModel.signUpError)
+        }
     }
 
     fun getUserInputs() {
@@ -31,18 +36,27 @@ open class ConnexionActivity : BaseActivity() {
         userInputs["password"] = getTextInputValue(R.id.passwordInput)
     }
 
-    fun userWasLogged(): Boolean {
-        // TODO : use app preferences to check user logged
-        return false    
+    private fun registerUser() {
+        val user = User(
+            0,
+            userInputs["firstname"]!!,
+            userInputs["lastname"]!!,
+            userInputs["username"]!!,
+            userInputs["password"]!!,
+            "",
+            ""
+        )
+        val lambda = { proceed() }
+        viewModel.register(user, lambda)
     }
 
-    fun isValidSignUp(): Boolean {
-        if (isUsernameTaken(userInputs["username"].toString())) {
-            this.currentError = usernameTakenError
-            return false
-        }
+    private fun proceed() {
+        val intent = Intent(this, MoreInformationActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun isValidSignUp(): Boolean {
         if (!fieldsCorrect()) {
-            this.currentError = signUpError
             return false
         }
         return true
@@ -57,14 +71,7 @@ open class ConnexionActivity : BaseActivity() {
         return true
     }
 
-    private fun isUsernameTaken(username: String): Boolean {
-        return userManager.userExist(username)
-    }
-
     private fun getTextInputValue(id: Int): String {
         return findViewById<TextInputEditText>(id).text.toString()
-    }
-
-    fun registerUser() {
     }
 }

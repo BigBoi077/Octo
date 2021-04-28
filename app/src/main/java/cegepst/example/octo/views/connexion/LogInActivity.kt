@@ -1,7 +1,6 @@
 package cegepst.example.octo.views.connexion
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import cegepst.example.octo.R
@@ -19,6 +18,6 @@ class LogInActivity : ConnexionActivity() {
     }
 
     fun actionLogIn(view: View) {
-
+        // super.saveUserLogin()
     }
 }

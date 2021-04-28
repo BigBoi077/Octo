@@ -13,6 +13,4 @@ data class User(
         @ColumnInfo(name = "password") val password: String,
         @ColumnInfo(name = "fav_guild") val favoriteGuild: String,
         @ColumnInfo(name = "fav_color") val favoriteColor: String
-) {
-
-}
+)

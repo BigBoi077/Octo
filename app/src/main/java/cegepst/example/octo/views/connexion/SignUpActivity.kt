@@ -1,6 +1,5 @@
 package cegepst.example.octo.views.connexion
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import cegepst.example.octo.R
@@ -14,12 +13,6 @@ class SignUpActivity : ConnexionActivity() {
 
     fun actionSignUp(view: View) {
         super.getUserInputs()
-        if (super.isValidSignUp()) {
-            super.registerUser()
-            val intent = Intent(this, MoreInformationActivity::class.java)
-            startActivity(intent)
-        } else {
-            alert(super.currentError)
-        }
+        super.signUp()
     }
 }

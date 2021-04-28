@@ -5,15 +5,16 @@ import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
 import cegepst.example.octo.models.User
+import io.reactivex.Single
 
 @Dao
 interface UserDAO {
 
     @Query("SELECT * FROM user WHERE id=:id")
-    fun get(id: Long): User
+    fun getById(id: Long): User
 
     @Query("SELECT * FROM user WHERE username=:username")
-    fun get(username: String): User
+    fun getByUsername(username: String): Single<User>
 
     @Update
     fun update(user: User)
