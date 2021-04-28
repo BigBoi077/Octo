@@ -3,16 +3,14 @@ package cegepst.example.octo.views.connexion
 import android.content.Intent
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
-import cegepst.example.octo.R
 import cegepst.example.octo.models.User
 import cegepst.example.octo.viewModels.ConnexionViewModel
 import cegepst.example.octo.views.BaseActivity
-import com.google.android.material.textfield.TextInputEditText
 
 open class ConnexionActivity : BaseActivity() {
 
     private lateinit var viewModel: ConnexionViewModel
-    private lateinit var userInputs: HashMap<String, String>
+    internal lateinit var userInputs: HashMap<String, String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,13 +25,6 @@ open class ConnexionActivity : BaseActivity() {
         } else {
             alert(viewModel.signUpError)
         }
-    }
-
-    fun getUserInputs() {
-        userInputs["firstname"] = getTextInputValue(R.id.firstNameInput)
-        userInputs["lastname"] = getTextInputValue(R.id.lastNameInput)
-        userInputs["username"] = getTextInputValue(R.id.usernameInput)
-        userInputs["password"] = getTextInputValue(R.id.passwordInput)
     }
 
     private fun registerUser() {
@@ -69,9 +60,5 @@ open class ConnexionActivity : BaseActivity() {
             }
         }
         return true
-    }
-
-    private fun getTextInputValue(id: Int): String {
-        return findViewById<TextInputEditText>(id).text.toString()
     }
 }

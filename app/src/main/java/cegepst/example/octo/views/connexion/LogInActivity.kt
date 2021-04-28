@@ -18,6 +18,6 @@ class LogInActivity : ConnexionActivity() {
     }
 
     fun actionLogIn(view: View) {
-        // super.saveUserLogin()
+        super.getLogInInputs()
     }
 }
