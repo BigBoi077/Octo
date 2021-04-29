@@ -6,11 +6,11 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "user")
 data class User(
-        @PrimaryKey(autoGenerate = true) val id: Long,
-        @ColumnInfo(name = "firstname") val firstname: String,
-        @ColumnInfo(name = "lastname") val lastname: String,
-        @ColumnInfo(name = "username") val username: String,
-        @ColumnInfo(name = "password") val password: String,
-        @ColumnInfo(name = "fav_guild") val favoriteGuild: String,
-        @ColumnInfo(name = "fav_color") val favoriteColor: String
+        @PrimaryKey(autoGenerate = true) var id: Long,
+        @ColumnInfo(name = "firstname") var firstname: String,
+        @ColumnInfo(name = "lastname") var lastname: String,
+        @ColumnInfo(name = "username") var username: String,
+        @ColumnInfo(name = "password") var password: String,
+        @ColumnInfo(name = "fav_guild") var favoriteGuild: String,
+        @ColumnInfo(name = "fav_color") var favoriteColor: String
 )

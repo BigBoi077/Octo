@@ -1,10 +1,15 @@
 package cegepst.example.octo.views.connexion
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import androidx.lifecycle.ViewModelProvider
 import cegepst.example.octo.R
+import cegepst.example.octo.models.User
+import cegepst.example.octo.viewModels.ConnexionViewModel
+import cegepst.example.octo.views.cards.MainActivity
 
 private const val COLORLESS = "Colorless"
 private const val RED = "Red"
@@ -18,11 +23,14 @@ class MoreInformationActivity : ConnexionActivity() {
     private lateinit var guildSpinner: Spinner
     private lateinit var currentChosenColor: String
     private lateinit var currentChosenGuild: String
+    private lateinit var viewModel: ConnexionViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         super.getUser()
         this.currentChosenColor = COLORLESS
+        this.viewModel = ViewModelProvider(this).get(ConnexionViewModel::class.java)
+        this.viewModel.initialize(this)
         setContentView(R.layout.activity_more_information)
         removeActionBar()
         populateSpinner()
@@ -50,8 +58,16 @@ class MoreInformationActivity : ConnexionActivity() {
         }
     }
 
-    fun actionRegister(view: View) {
-        val chosenGuild = guildSpinner.selectedItem
+    fun completeRegister(view: View) {
+        this.currentChosenGuild = guildSpinner.selectedItem.toString()
+        user = User(user.id, user.firstname, user.lastname, user.username, user.password, currentChosenColor, currentChosenGuild)
+        val lambda = { proceed() }
+        this.viewModel.update(user, lambda)
+    }
 
+    private fun proceed() {
+        saveUserLogin(user)
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
 }

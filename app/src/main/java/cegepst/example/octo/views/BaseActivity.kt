@@ -3,10 +3,14 @@ package cegepst.example.octo.views
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import cegepst.example.octo.R
 import cegepst.example.octo.models.User
 import cegepst.example.octo.stores.AppStore
+import cegepst.example.octo.viewModels.BaseViewModel
+import com.google.gson.Gson
 
 const val PREF_APP = "app"
 const val PREF_USERNAME = "username"
@@ -15,23 +19,22 @@ const val PREF_LOGGED = "logged"
 
 open class BaseActivity : AppCompatActivity() {
 
+    private lateinit var viewModel: BaseViewModel
     private lateinit var editor: SharedPreferences
-    private lateinit var user: User
-    internal lateinit var database: AppStore
-    internal lateinit var userManager: UserManager
+    private lateinit var database: AppStore
+    internal lateinit var user: User
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_base)
-        getUser()
         this.editor = getSharedPreferences(PREF_APP, MODE_PRIVATE)
         this.database = AppStore(this)
-        this.userManager = UserManager(database)
+        this.viewModel = ViewModelProvider(this).get(BaseViewModel::class.java)
+        this.viewModel.initialize(this)
     }
 
     fun getUser() {
         val lambda = { user: User -> setUserInformation(user) }
-        userManager.getUser(getUserId(), lambda)
+        viewModel.getUser(getUserId(), lambda)
     }
 
     fun removeActionBar() {
@@ -59,10 +62,17 @@ open class BaseActivity : AppCompatActivity() {
     }
 
     fun saveUserLogin(user: User) {
+        this.user = user
+        Log.d("EDITOR USER", Gson().toJson(user))
         val editor = getSharedPreferences(PREF_APP, MODE_PRIVATE).edit()
         editor.putString(PREF_USERNAME, user.username)
         editor.putLong(PREF_USER_ID, user.id)
-        editor.putBoolean(PREF_LOGGED, true)
+        editor.putBoolean(PREF_LOGGED, false)
         editor.apply()
+        editor.commit()
+    }
+
+    fun test() {
+        getUser()
     }
 }

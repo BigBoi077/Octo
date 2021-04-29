@@ -19,6 +19,7 @@
     <string name="octo_logo_description">Octo log</string>
     <string name="more_information_question_color">Amongst the six colors of Magic, which do you prefer the most  personally ?</string>
     <string name="colorless_mana_description">Eldrazi</string>
-    <string name="signUpError">Your sign up information\'s are invalid</string>
-    <string name="usernameTakenError">This username is already taken</string>
+    <string name="sign_up_error">Your sign up information\'s are invalid</string>
+    <string name="username_taken_error">This username is already taken</string>
+    <string name="log_in_error">Invalid credentials</string>
 </resources>

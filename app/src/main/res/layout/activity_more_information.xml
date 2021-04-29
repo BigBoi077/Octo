@@ -243,7 +243,7 @@
 
         <ImageButton
             android:id="@+id/textButton"
-            android:onClick="actionRegister"
+            android:onClick="completeRegister"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

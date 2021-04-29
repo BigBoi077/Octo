@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import cegepst.example.octo.models.User
 import cegepst.example.octo.viewModels.ConnexionViewModel
 import cegepst.example.octo.views.BaseActivity
+import cegepst.example.octo.views.cards.MainActivity
 
 open class ConnexionActivity : BaseActivity() {
 
@@ -19,12 +20,34 @@ open class ConnexionActivity : BaseActivity() {
         this.userInputs = HashMap()
     }
 
+    fun logIn() {
+        if (isValidForm()) {
+            logUser()
+        } else {
+            alert(viewModel.signUpError)
+        }
+    }
+
     fun signUp() {
-        if (isValidSignUp()) {
+        if (isValidForm()) {
             registerUser()
         } else {
             alert(viewModel.signUpError)
         }
+    }
+
+    private fun logUser() {
+        val user = User(
+            0,
+            "",
+            "",
+            userInputs["username"]!!,
+            userInputs["password"]!!,
+            "",
+            ""
+        )
+        val lambda = { log() }
+        viewModel.log(user, lambda)
     }
 
     private fun registerUser() {
@@ -37,8 +60,15 @@ open class ConnexionActivity : BaseActivity() {
             "",
             ""
         )
-        val lambda = { proceed() }
-        viewModel.register(user, lambda)
+        val save = { value: User -> saveUserLogin(value) }
+        val proceed = { proceed() }
+        viewModel.register(user, save, proceed)
+
+    }
+
+    private fun log() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
     }
 
     private fun proceed() {
@@ -46,7 +76,7 @@ open class ConnexionActivity : BaseActivity() {
         startActivity(intent)
     }
 
-    private fun isValidSignUp(): Boolean {
+    private fun isValidForm(): Boolean {
         if (!fieldsCorrect()) {
             return false
         }
