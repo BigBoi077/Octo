@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/octo_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.Octo">
+        <activity android:name=".views.FeedActivity"></activity>
         <activity android:name=".views.connexion.LogInActivity" />
         <activity android:name=".views.connexion.MoreInformationActivity" />
         <activity android:name=".views.artists.ArtistActivity" />

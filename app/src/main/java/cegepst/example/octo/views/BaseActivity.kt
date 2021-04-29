@@ -63,16 +63,11 @@ open class BaseActivity : AppCompatActivity() {
 
     fun saveUserLogin(user: User) {
         this.user = user
-        Log.d("EDITOR USER", Gson().toJson(user))
         val editor = getSharedPreferences(PREF_APP, MODE_PRIVATE).edit()
         editor.putString(PREF_USERNAME, user.username)
         editor.putLong(PREF_USER_ID, user.id)
         editor.putBoolean(PREF_LOGGED, false)
         editor.apply()
         editor.commit()
-    }
-
-    fun test() {
-        getUser()
     }
 }

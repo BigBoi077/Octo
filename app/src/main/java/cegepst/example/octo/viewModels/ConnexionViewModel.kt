@@ -1,12 +1,10 @@
 package cegepst.example.octo.viewModels
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import cegepst.example.octo.R
 import cegepst.example.octo.models.User
 import cegepst.example.octo.stores.AppStore
 import cegepst.example.octo.views.BaseActivity
-import com.google.gson.Gson
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
@@ -50,22 +48,26 @@ class ConnexionViewModel: ViewModel() {
                     activity.alert(usernameTakenError)
                 },
                 onError = {
-                    insert(user)
-                    getSave(user, save, proceed)
+                    val conclude = {
+                        getSave(user, save, proceed)
+                    }
+                    insert(user, conclude)
                 }
             )
     }
 
-    private fun insert(user: User) {
+    private fun insert(user: User, conclude: () -> Unit) {
         GlobalScope.launch {
             database.userDAO().insert(user)
+            withContext(Dispatchers.Main) {
+                conclude()
+            }
         }
     }
 
     private fun getSave(user: User, save: (User) -> Unit, proceed: () -> Unit) {
         GlobalScope.launch {
             val freshUser = database.userDAO().getByUsername(user.username)
-            Log.d("FRESH USER", Gson().toJson(freshUser))
             withContext(Dispatchers.Main) {
                 save(freshUser)
                 proceed()
@@ -79,10 +81,10 @@ class ConnexionViewModel: ViewModel() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeBy(
                 onSuccess = {
-                    activity.alert(logInError)
+                    lambda()
                 },
                 onError = {
-                    lambda()
+                    activity.alert(logInError)
                 }
             )
     }
