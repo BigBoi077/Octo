@@ -2,7 +2,7 @@ package cegepst.example.octo.viewModels
 
 import androidx.lifecycle.ViewModel
 import cegepst.example.octo.R
-import cegepst.example.octo.models.User
+import cegepst.example.octo.models.stored.User
 import cegepst.example.octo.stores.AppStore
 import cegepst.example.octo.views.BaseActivity
 import io.reactivex.android.schedulers.AndroidSchedulers

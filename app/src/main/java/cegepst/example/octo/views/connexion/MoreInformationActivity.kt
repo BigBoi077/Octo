@@ -7,7 +7,7 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.lifecycle.ViewModelProvider
 import cegepst.example.octo.R
-import cegepst.example.octo.models.User
+import cegepst.example.octo.models.stored.User
 import cegepst.example.octo.viewModels.ConnexionViewModel
 import cegepst.example.octo.views.cards.MainActivity
 

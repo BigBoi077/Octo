@@ -4,7 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
-import cegepst.example.octo.models.User
+import cegepst.example.octo.models.stored.User
 import io.reactivex.Single
 
 @Dao

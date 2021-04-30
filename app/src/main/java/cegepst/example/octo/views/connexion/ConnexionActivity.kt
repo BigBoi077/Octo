@@ -3,7 +3,7 @@ package cegepst.example.octo.views.connexion
 import android.content.Intent
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
-import cegepst.example.octo.models.User
+import cegepst.example.octo.models.stored.User
 import cegepst.example.octo.viewModels.ConnexionViewModel
 import cegepst.example.octo.views.BaseActivity
 import cegepst.example.octo.views.cards.MainActivity

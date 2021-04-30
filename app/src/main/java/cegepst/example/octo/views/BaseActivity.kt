@@ -3,14 +3,11 @@ package cegepst.example.octo.views
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import cegepst.example.octo.R
-import cegepst.example.octo.models.User
+import cegepst.example.octo.models.stored.User
 import cegepst.example.octo.stores.AppStore
 import cegepst.example.octo.viewModels.BaseViewModel
-import com.google.gson.Gson
 
 const val PREF_APP = "app"
 const val PREF_USERNAME = "username"

@@ -1,4 +1,4 @@
-package cegepst.example.octo.models
+package cegepst.example.octo.models.stored
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
