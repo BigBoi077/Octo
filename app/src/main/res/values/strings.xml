@@ -24,4 +24,6 @@
     <string name="log_in_error">Invalid credentials</string>
     <string name="default_card_placeholder">Surgical extraction</string>
     <string name="default_card_set_placeholder">New Phyrexia</string>
+    <string name="default_card_price_placeholder">0.94$</string>
+    <string name="default_card_artist_placeholder">By Steven Belledin</string>
 </resources>
