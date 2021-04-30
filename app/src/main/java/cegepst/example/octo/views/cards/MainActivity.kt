@@ -9,5 +9,17 @@ class MainActivity : FeedActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        super.getUser()
+
+    }
+
+    override fun initialize() {
+        super.initialize()
+        return
+    }
+
+    override fun fillFeed() {
+        super.fillFeed()
+        return
     }
 }
