@@ -17,7 +17,7 @@ open class BaseViewModel: ViewModel() {
     private lateinit var database: AppStore
     private lateinit var activity: BaseActivity
 
-    internal val srcyfallService by lazy {
+    internal val scryfallService by lazy {
         ScryfallService.create()
     }
 

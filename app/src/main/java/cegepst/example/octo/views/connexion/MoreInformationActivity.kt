@@ -27,7 +27,8 @@ class MoreInformationActivity : ConnexionActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        super.getUser()
+        val callback = {}
+        super.getUser(callback)
         this.currentChosenColor = COLORLESS
         this.viewModel = ViewModelProvider(this).get(ConnexionViewModel::class.java)
         this.viewModel.initialize(this)

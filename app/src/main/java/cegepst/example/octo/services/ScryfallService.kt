@@ -20,7 +20,7 @@ interface ScryfallService {
     @GET("${CARD_ENDPOINT}/${RANDOM_ENDPOINT}")
     fun getRandomCards(
             @Query("q") flag: String
-    ): Call<Card>
+    ): Call<CardResult>
 
     @GET("${CARD_ENDPOINT}/${RANDOM_ENDPOINT}")
     fun getSingleCard(

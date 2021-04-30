@@ -10,7 +10,7 @@ class ColorQueryFormatter {
 
     companion object {
 
-        private lateinit var currentColorPie: String
+        private var currentColorPie: String = ""
 
         fun getRandomColorQuery(): String {
             val colors = MagicColors.values().toList().shuffled()
