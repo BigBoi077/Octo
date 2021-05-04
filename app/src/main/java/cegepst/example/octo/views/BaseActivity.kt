@@ -3,6 +3,7 @@ package cegepst.example.octo.views
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -64,7 +65,7 @@ open class BaseActivity : AppCompatActivity() {
         val editor = getSharedPreferences(PREF_APP, MODE_PRIVATE).edit()
         editor.putString(PREF_USERNAME, user.username)
         editor.putLong(PREF_USER_ID, user.id)
-        editor.putBoolean(PREF_LOGGED, false)
+        editor.putBoolean(PREF_LOGGED, true)
         editor.apply()
         editor.commit()
     }

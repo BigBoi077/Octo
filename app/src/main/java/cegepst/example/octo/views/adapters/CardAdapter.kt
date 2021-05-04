@@ -16,17 +16,15 @@ class CardAdapter(private val cards: List<Card>) : RecyclerView.Adapter<CardAdap
 
         private val image = itemView.findViewById<ImageView>(R.id.cardImage)
         private val name = itemView.findViewById<TextView>(R.id.cardName)
-        private val artist = itemView.findViewById<TextView>(R.id.cardArtist)
         private val set = itemView.findViewById<TextView>(R.id.cardSet)
         private val price = itemView.findViewById<TextView>(R.id.cardPrice)
         private val actionSingle = itemView.findViewById<ImageView>(R.id.actionSingleCard)
 
         fun setContent(card: Card) {
-            Glide.with(itemView).load(card.imageUris["normal"]).centerCrop().into(image)
+            Glide.with(itemView).load(card.imageUris?.get("small")).centerCrop().into(image)
             name.text = card.name
-            artist.text = card.artist
             set.text = card.setName
-            price.text = card.prices["usd"]
+            price.text = card.prices?.get("usd")
         }
     }
 

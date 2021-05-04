@@ -1,9 +1,8 @@
 package cegepst.example.octo.models.base
 
-const val NBR_COLORS = 6
+const val NBR_COLORS = 5
 
 enum class MagicColors(private val color: String) {
-    COLORLESS("colorless"),
     RED("red"),
     BLUE("blue"),
     BLACK("black"),

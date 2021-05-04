@@ -75,13 +75,13 @@ class ConnexionViewModel: ViewModel() {
         }
     }
 
-    fun log(user: User, lambda: () -> Unit) {
+    fun log(user: User, actionLog: () -> Unit) {
         database.userDAO().getByUsernamePassword(user.username, user.password)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeBy(
                 onSuccess = {
-                    lambda()
+                    actionLog()
                 },
                 onError = {
                     activity.alert(logInError)

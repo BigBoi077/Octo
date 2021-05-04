@@ -46,8 +46,8 @@ open class ConnexionActivity : BaseActivity() {
             "",
             ""
         )
-        val lambda = { log() }
-        viewModel.log(user, lambda)
+        val logUser = { log() }
+        viewModel.log(user, logUser)
     }
 
     private fun registerUser() {
