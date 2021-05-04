@@ -38,6 +38,23 @@ class FeedViewModel: BaseViewModel() {
                 })
     }
 
+    fun fetchCommanderCards() {
+        scryfallService.getRandomCommanders(Formatter.IS_COMMANDER)
+                .enqueue(object  : Callback<CardResult> {
+                    override fun onResponse(call: Call<CardResult>, response: Response<CardResult>) {
+                        if (cards.value!!.isEmpty()) {
+                            cards.value = response.body()!!.cards
+                        } else {
+                            makeTempList(cards, response)
+                        }
+                    }
+
+                    override fun onFailure(call: Call<CardResult>, t: Throwable) {
+                        Log.d("LOADING FAILURE", t.message.toString())
+                    }
+                })
+    }
+
     fun fetchRandomCards(callback: (String) -> Unit = {}) {
         scryfallService.getRandomArtist()
                 .enqueue(object : Callback<ResultArtist> {
@@ -74,5 +91,6 @@ class FeedViewModel: BaseViewModel() {
         val list = cards.value as ArrayList<Card>
         list.addAll(response.body()!!.cards)
         cards.value = list
+        (cards.value as ArrayList<Card>).shuffle()
     }
 }

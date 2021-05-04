@@ -2,20 +2,15 @@ package cegepst.example.octo.views.cards
 
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.TextView
-import androidx.drawerlayout.widget.DrawerLayout
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import cegepst.example.octo.R
 import cegepst.example.octo.interfaces.IFeedActivity
 import cegepst.example.octo.views.FeedActivity
 import com.google.android.material.navigation.NavigationView
 
-class MainActivity : FeedActivity(), NavigationView.OnNavigationItemSelectedListener, IFeedActivity {
-
+class CommanderActivity : FeedActivity(), NavigationView.OnNavigationItemSelectedListener, IFeedActivity {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_commander)
         val callback = { initialize() }
         super.getUser(callback)
     }
@@ -27,13 +22,8 @@ class MainActivity : FeedActivity(), NavigationView.OnNavigationItemSelectedList
         this.fillFeed()
     }
 
-    override fun initializeMenu() {
-        super.initializeMenu(this)
-    }
-
     override fun fillFeed() {
-        val callback = { name: String -> setArtistTitle(name) }
-        viewModel.fetchRandomCards(callback)
+        viewModel.fetchCommanderCards()
         viewModel.getCards().observe(this, {
             cards.clear()
             cards.addAll(it)
@@ -41,16 +31,21 @@ class MainActivity : FeedActivity(), NavigationView.OnNavigationItemSelectedList
         })
     }
 
+    override fun initializeMenu() {
+        super.initializeMenu(this)
+    }
+
+    override fun setScrollListener() {
+        val callback = { actionLoad() }
+        super.setScrollListener(callback)
+    }
+
     override fun initializeAdapter() {
         super.initializeAdapter(this)
     }
 
-    override fun setScrollListener() {
-
-    }
-
     override fun actionLoad() {
-        viewModel.fetchRandomCards()
+        viewModel.fetchCommanderCards()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -62,10 +57,5 @@ class MainActivity : FeedActivity(), NavigationView.OnNavigationItemSelectedList
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         return true
-    }
-
-    private fun setArtistTitle(artistName: String) {
-        val title = findViewById<TextView>(R.id.artistShowcase)
-        title.text = "Today's chosen artist is : $artistName"
     }
 }

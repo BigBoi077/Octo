@@ -9,6 +9,8 @@ private const val ARTIST_PREFIX = "a:"
 class Formatter {
 
     companion object {
+        const val IS_COMMANDER = "is:commander"
+
         fun formatArtistSearch(artistName: String): String {
             return "${ARTIST_PREFIX}\"${artistName}\""
         }

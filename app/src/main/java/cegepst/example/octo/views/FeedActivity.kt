@@ -1,19 +1,17 @@
 package cegepst.example.octo.views
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.lifecycle.GeneratedAdapter
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import cegepst.example.octo.R
-import cegepst.example.octo.interfaces.IFeedActivity
 import cegepst.example.octo.models.base.Card
 import cegepst.example.octo.models.helpers.DrawerMenuManager
-import cegepst.example.octo.viewModels.ConnexionViewModel
 import cegepst.example.octo.viewModels.FeedViewModel
 import cegepst.example.octo.views.adapters.CardAdapter
 import com.google.android.material.navigation.NavigationView
@@ -24,6 +22,8 @@ open class FeedActivity : BaseActivity() {
     internal lateinit var viewModel: FeedViewModel
     internal lateinit var cards: ArrayList<Card>
     internal lateinit var adapter: CardAdapter
+    internal lateinit var drawerLayout: DrawerLayout
+    internal lateinit var recyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,5 +50,35 @@ open class FeedActivity : BaseActivity() {
             }
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    fun initializeMenu(activity: FeedActivity) {
+        drawerLayout = activity.findViewById(R.id.drawer)
+        actionBarDrawerToggle = ActionBarDrawerToggle(activity, drawerLayout, R.string.action_open, R.string.action_close)
+        drawerLayout.addDrawerListener(actionBarDrawerToggle)
+        actionBarDrawerToggle.syncState()
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        menu = activity.findViewById(R.id.drawerMenu)
+        menu.setNavigationItemSelectedListener {
+            DrawerMenuManager.handleChosenAction(it, activity)
+            true
+        }
+    }
+
+    fun initializeAdapter(activity: FeedActivity) {
+        this.recyclerView = activity.findViewById(R.id.cardList)
+        this.recyclerView.adapter = adapter
+        this.recyclerView.layoutManager = LinearLayoutManager(this)
+    }
+
+    fun setScrollListener(callback: () -> Unit) {
+        this.recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+                if (!recyclerView.canScrollVertically(1)) {
+                    callback()
+                }
+            }
+        })
     }
 }

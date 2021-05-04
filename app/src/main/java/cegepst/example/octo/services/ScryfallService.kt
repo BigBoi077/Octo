@@ -37,13 +37,15 @@ interface ScryfallService {
 
     @GET("${CARD_ENDPOINT}/${SEARCH_ENDPOINT}")
     fun getRandomCardsAccordingToArtist(
-            @Query("q") artistName: String
+        @Query("q") artistName: String
     ): Call<CardResult>
 
+    @GET("${CARD_ENDPOINT}/${SEARCH_ENDPOINT}")
+    fun getRandomCommanders(
+        @Query("q") commanderQuery: String
+    ):Call<CardResult>
+
     companion object {
-
-        const val COMMANDER_SEARCH = "is%3Acommander"
-
         fun create(): ScryfallService {
             val retrofit = Retrofit.Builder()
                     .addConverterFactory(

@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.view.MenuItem
 import cegepst.example.octo.R
+import cegepst.example.octo.views.cards.CommanderActivity
 import cegepst.example.octo.views.cards.MainActivity
 
 class DrawerMenuManager {
@@ -16,7 +17,7 @@ class DrawerMenuManager {
                     activity.startActivity(intent)
                 }
                 R.id.actionCommanderCards -> {
-                    val intent = Intent(activity, MainActivity::class.java)
+                    val intent = Intent(activity, CommanderActivity::class.java)
                     activity.startActivity(intent)
                 }
                 R.id.actionArtists -> {
