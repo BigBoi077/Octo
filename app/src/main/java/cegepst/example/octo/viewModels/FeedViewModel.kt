@@ -38,11 +38,12 @@ class FeedViewModel: BaseViewModel() {
                 })
     }
 
-    fun fetchRandomCards() {
+    fun fetchRandomCards(callback: (String) -> Unit = {}) {
         scryfallService.getRandomArtist()
                 .enqueue(object : Callback<ResultArtist> {
                     override fun onResponse(call: Call<ResultArtist>, response: Response<ResultArtist>) {
                         val randomArtist = response.body()!!.artistName.random()
+                        callback(randomArtist)
                         fetchRandomCardsAccordingToArtist(randomArtist)
                     }
 

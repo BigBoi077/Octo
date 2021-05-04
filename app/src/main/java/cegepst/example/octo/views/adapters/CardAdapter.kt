@@ -21,7 +21,7 @@ class CardAdapter(private val cards: List<Card>) : RecyclerView.Adapter<CardAdap
         private val actionSingle = itemView.findViewById<ImageView>(R.id.actionSingleCard)
 
         fun setContent(card: Card) {
-            Glide.with(itemView).load(card.imageUris?.get("small")).centerCrop().into(image)
+            Glide.with(itemView).load(card.imageUris?.get("normal")).centerCrop().into(image)
             name.text = card.name
             set.text = card.setName
             price.text = card.prices?.get("usd")

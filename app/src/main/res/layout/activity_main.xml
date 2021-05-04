@@ -6,13 +6,31 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:id="@+id/drawer"
-    android:padding="32dp"
+    android:layout_margin="16dp"
     tools:context=".views.cards.MainActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/cardList"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/artistShowcase"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="sans-serif-condensed"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="@string/default_card_artist_placeholder"
+            android:textSize="24sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/cardList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/drawerMenu"

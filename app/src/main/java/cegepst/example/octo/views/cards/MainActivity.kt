@@ -2,6 +2,7 @@ package cegepst.example.octo.views.cards
 
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -45,7 +46,8 @@ class MainActivity : FeedActivity(), NavigationView.OnNavigationItemSelectedList
     }
 
     override fun fillFeed() {
-        viewModel.fetchRandomCards()
+        val callback = { name: String -> setArtistTitle(name) }
+        viewModel.fetchRandomCards(callback)
         viewModel.getCards().observe(this, {
             cards.clear()
             cards.addAll(it)
@@ -64,7 +66,7 @@ class MainActivity : FeedActivity(), NavigationView.OnNavigationItemSelectedList
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
                 if (!recyclerView.canScrollVertically(1)) {
-                    // TODO : load more
+                    actionLoad()
                 }
             }
         })
@@ -83,5 +85,10 @@ class MainActivity : FeedActivity(), NavigationView.OnNavigationItemSelectedList
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         return true
+    }
+
+    private fun setArtistTitle(artistName: String) {
+        val title = findViewById<TextView>(R.id.artistShowcase)
+        title.text = "Today's chosen artist is : $artistName"
     }
 }
