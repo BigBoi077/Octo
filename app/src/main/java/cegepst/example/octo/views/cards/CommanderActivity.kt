@@ -10,7 +10,7 @@ import com.google.android.material.navigation.NavigationView
 class CommanderActivity : FeedActivity(), NavigationView.OnNavigationItemSelectedListener, IFeedActivity {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_commander)
+        setContentView(R.layout.activity_main)
         val callback = { initialize() }
         super.getUser(callback)
     }

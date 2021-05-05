@@ -7,6 +7,7 @@ import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 private const val BASE_URL = "https://api.scryfall.com"
@@ -21,11 +22,13 @@ interface ScryfallService {
 
     @GET("${CARD_ENDPOINT}/${SEARCH_ENDPOINT}")
     fun getRandomCards(
-            @Query("q") flag: String
+        @Query("q") flag: String
     ): Call<CardResult>
 
-    @GET("${CARD_ENDPOINT}/${RANDOM_ENDPOINT}")
-    fun getSingleCard(): Call<Card>
+    @GET("${CARD_ENDPOINT}/{id}")
+    fun getSingleCard(
+        @Path("id") cardId: String?
+    ): Call<Card>
 
     @GET("${CARD_ENDPOINT}/${RANDOM_ENDPOINT}")
     fun getSingleCommanderCard(
@@ -46,14 +49,14 @@ interface ScryfallService {
     ):Call<CardResult>
 
     companion object {
-            fun create(): ScryfallService {
-                val retrofit = Retrofit.Builder()
-                        .addConverterFactory(
-                                GsonConverterFactory.create()
-                        ).baseUrl(BASE_URL)
-                        .build()
+        fun create(): ScryfallService {
+            val retrofit = Retrofit.Builder()
+                .addConverterFactory(
+                    GsonConverterFactory.create()
+                ).baseUrl(BASE_URL)
+                .build()
 
-                return retrofit.create(ScryfallService::class.java)
-            }
+            return retrofit.create(ScryfallService::class.java)
+        }
     }
 }

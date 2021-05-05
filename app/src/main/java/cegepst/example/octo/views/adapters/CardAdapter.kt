@@ -1,5 +1,6 @@
 package cegepst.example.octo.views.adapters
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import cegepst.example.octo.R
 import cegepst.example.octo.models.base.Card
+import cegepst.example.octo.views.cards.SingleCardActivity
 import com.bumptech.glide.Glide
 
 class CardAdapter(private val cards: List<Card>) : RecyclerView.Adapter<CardAdapter.ViewHolder>() {
@@ -25,6 +27,11 @@ class CardAdapter(private val cards: List<Card>) : RecyclerView.Adapter<CardAdap
             name.text = card.name
             set.text = card.setName
             price.text = card.prices?.get("usd")
+            actionSingle.setOnClickListener {
+                val intent = Intent(itemView.context, SingleCardActivity::class.java)
+                intent.putExtra("cardId", card.id)
+                itemView.context.startActivity(intent)
+            }
         }
     }
 

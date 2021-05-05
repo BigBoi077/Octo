@@ -20,5 +20,7 @@ class Card(
         @SerializedName("edhrec_rank") val edhrecRank: Int?,
         @SerializedName("prices") val prices: HashMap<String, String>?,
         @SerializedName("purchase_uris") val purchaseUris: HashMap<String, String>?,
-        @SerializedName("collector_number") val collectorNumber: String?
+        @SerializedName("collector_number") val collectorNumber: String?,
+        @SerializedName("type_line") val typeLine: String?,
+        @SerializedName("reserved") val isReserved: Boolean?
 )

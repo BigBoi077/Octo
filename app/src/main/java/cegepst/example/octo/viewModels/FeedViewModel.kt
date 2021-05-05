@@ -14,27 +14,61 @@ import retrofit2.Response
 class FeedViewModel: BaseViewModel() {
 
     internal var cards = MutableLiveData(listOf<Card>())
-    internal var cardList = ArrayList<Card>()
 
     internal fun getCards(): LiveData<List<Card>> {
         return cards
     }
 
+    fun fetchSingleCard(cardId: String?, lambda: (Card) -> Unit) {
+        scryfallService.getSingleCard(cardId)
+            .enqueue(object : Callback<Card> {
+                override fun onResponse(call: Call<Card>, response: Response<Card>) {
+                    val card = Card(
+                        response.body()?.id,
+                        response.body()?.name,
+                        response.body()?.set,
+                        response.body()?.released,
+                        response.body()?.imageUris,
+                        response.body()?.manaCost,
+                        response.body()?.convertedManaCost,
+                        response.body()?.oracleText,
+                        response.body()?.power,
+                        response.body()?.toughness,
+                        response.body()?.legalities,
+                        response.body()?.setName,
+                        response.body()?.rarity,
+                        response.body()?.artist,
+                        response.body()?.edhrecRank,
+                        response.body()?.prices,
+                        response.body()?.purchaseUris,
+                        response.body()?.collectorNumber,
+                        response.body()?.typeLine,
+                        response.body()?.isReserved
+                    )
+                    lambda(card)
+                }
+
+                override fun onFailure(call: Call<Card>, t: Throwable) {
+                    Log.d("LOADING FAILURE SINGLE CARD", t.message.toString())
+                }
+            })
+    }
+
     fun fetchCardsByRandomColor() {
         scryfallService.getRandomCards(Formatter.getRandomColorQuery())
-                .enqueue(object : Callback<CardResult> {
-                    override fun onResponse(call: Call<CardResult>, response: Response<CardResult>) {
-                        if (cards.value!!.isEmpty()) {
-                            cards.value = response.body()!!.cards
-                        } else {
-                            makeTempList(cards, response)
-                        }
+            .enqueue(object : Callback<CardResult> {
+                override fun onResponse(call: Call<CardResult>, response: Response<CardResult>) {
+                    if (cards.value!!.isEmpty()) {
+                        cards.value = response.body()!!.cards
+                    } else {
+                        makeTempList(cards, response)
                     }
+                }
 
-                    override fun onFailure(call: Call<CardResult>, t: Throwable) {
-                        Log.d("LOADING FAILURE RANDOM CARD BY COLOR", t.message.toString())
-                    }
-                })
+                override fun onFailure(call: Call<CardResult>, t: Throwable) {
+                    Log.d("LOADING FAILURE RANDOM CARD BY COLOR", t.message.toString())
+                }
+            })
     }
 
     fun fetchCommanderCards() {
