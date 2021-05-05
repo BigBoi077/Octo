@@ -10,7 +10,6 @@ import cegepst.example.octo.models.results.ResultArtist
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import kotlin.collections.ArrayList
 
 class FeedViewModel: BaseViewModel() {
 
@@ -33,14 +32,14 @@ class FeedViewModel: BaseViewModel() {
                     }
 
                     override fun onFailure(call: Call<CardResult>, t: Throwable) {
-                        Log.d("LOADING FAILURE", t.message.toString())
+                        Log.d("LOADING FAILURE RANDOM CARD BY COLOR", t.message.toString())
                     }
                 })
     }
 
     fun fetchCommanderCards() {
         scryfallService.getRandomCommanders(Formatter.IS_COMMANDER)
-                .enqueue(object  : Callback<CardResult> {
+                .enqueue(object : Callback<CardResult> {
                     override fun onResponse(call: Call<CardResult>, response: Response<CardResult>) {
                         if (cards.value!!.isEmpty()) {
                             cards.value = response.body()!!.cards
@@ -50,7 +49,7 @@ class FeedViewModel: BaseViewModel() {
                     }
 
                     override fun onFailure(call: Call<CardResult>, t: Throwable) {
-                        Log.d("LOADING FAILURE", t.message.toString())
+                        Log.d("LOADING FAILURE COMMANDER CARDS", t.message.toString())
                     }
                 })
     }
@@ -65,7 +64,7 @@ class FeedViewModel: BaseViewModel() {
                     }
 
                     override fun onFailure(call: Call<ResultArtist>, t: Throwable) {
-                        Log.d("LOADING FAILURE", t.message.toString())
+                        Log.d("LOADING FAILURE RANDOM ARTIST", t.message.toString())
                     }
                 })
     }
@@ -82,7 +81,7 @@ class FeedViewModel: BaseViewModel() {
                     }
 
                     override fun onFailure(call: Call<CardResult>, t: Throwable) {
-                        Log.d("LOADING FAILURE", t.message.toString())
+                        Log.d("LOADING FAILURE RANDOM CARDS BY ARTIST", t.message.toString())
                     }
                 })
     }

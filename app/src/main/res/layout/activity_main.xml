@@ -22,7 +22,6 @@
             android:fontFamily="sans-serif-condensed"
             android:gravity="center"
             android:padding="8dp"
-            android:text="@string/default_card_artist_placeholder"
             android:textSize="24sp" />
 
         <androidx.recyclerview.widget.RecyclerView

@@ -1,8 +1,10 @@
 package cegepst.example.octo.models.helpers
 
 import cegepst.example.octo.models.base.MagicColors
+import java.util.*
 import kotlin.random.Random
 
+private const val MAGIC_ART_STORE_LINK = "https://www.originalmagicart.store/collections/"
 private const val COLOR_PREFX = "color>="
 private const val ARTIST_PREFIX = "a:"
 
@@ -30,6 +32,16 @@ class Formatter {
 
         fun getSingleColorQuery(color: String): String {
             return "$COLOR_PREFX$color"
+        }
+
+        fun slug(element: String): String {
+            element.replace(" ", "-")
+            element.toLowerCase(Locale.ROOT)
+            return element
+        }
+
+        fun makeArtistLink(artistName: String): String {
+            return "${MAGIC_ART_STORE_LINK}${slug(artistName)}"
         }
     }
 }

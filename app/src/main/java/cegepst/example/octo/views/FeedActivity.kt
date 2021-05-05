@@ -63,6 +63,7 @@ open class FeedActivity : BaseActivity() {
             DrawerMenuManager.handleChosenAction(it, activity)
             true
         }
+        supportActionBar?.title = ""
     }
 
     fun initializeAdapter(activity: FeedActivity) {

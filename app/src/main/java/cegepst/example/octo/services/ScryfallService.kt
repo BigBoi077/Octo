@@ -46,14 +46,14 @@ interface ScryfallService {
     ):Call<CardResult>
 
     companion object {
-        fun create(): ScryfallService {
-            val retrofit = Retrofit.Builder()
-                    .addConverterFactory(
-                            GsonConverterFactory.create()
-                    ).baseUrl(BASE_URL)
-                    .build()
+            fun create(): ScryfallService {
+                val retrofit = Retrofit.Builder()
+                        .addConverterFactory(
+                                GsonConverterFactory.create()
+                        ).baseUrl(BASE_URL)
+                        .build()
 
-            return retrofit.create(ScryfallService::class.java)
-        }
+                return retrofit.create(ScryfallService::class.java)
+            }
     }
 }
