@@ -40,9 +40,10 @@
     <string name="default_card_release">Released on 2015–05-22</string>
     <string name="default_converted_mana_cost">Cmc : 1.0</string>
     <string name="legalities_title">Legalities</string>
-    <string name="collector_information_title">Collector information</string>
+    <string name="collector_information_title">Collector info</string>
     <string name="default_card_is_reserved">Reserved</string>
     <string name="default_collector_number">Collector number : 99</string>
     <string name="default_edhrec_rank">Edhrec rank : 13884</string>
     <string name="default_legality">Modern</string>
+    <string name="default_power">2</string>
 </resources>

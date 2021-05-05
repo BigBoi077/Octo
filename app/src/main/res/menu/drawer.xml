@@ -3,22 +3,18 @@
 
     <item
         android:id="@+id/actionRandomCards"
-        android:icon="@drawable/ic_card"
         android:title="@string/drawer_menu_random_cards" />
 
     <item
         android:id="@+id/actionCommanderCards"
-        android:icon="@drawable/ic_prestige"
         android:title="@string/drawer_menu_commander" />
 
     <item
         android:id="@+id/actionArtists"
-        android:icon="@drawable/ic_canvas"
         android:title="@string/drawer_menu_artists" />
 
     <item
         android:id="@+id/actionPersonalWishList"
-        android:icon="@drawable/ic_files"
         android:title="@string/drawer_menu_whishlist" />
 
 </menu>

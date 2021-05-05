@@ -48,28 +48,31 @@ class SingleCardFragment : Fragment() {
         setCollectorInformation()
     }
 
-    @SuppressLint("UseCompatLoadingForDrawables")
+    @SuppressLint("UseCompatLoadingForDrawables", "SetTextI18n")
     private fun setCollectorInformation() {
-        view.findViewById<TextView>(R.id.releaseDate).text = card.released
-        view.findViewById<TextView>(R.id.releaseSet).text = card.set
+        view.findViewById<TextView>(R.id.releaseDate).text = "Released on ${card.released}"
+        view.findViewById<TextView>(R.id.cardSet).text = card.set
         val drawable: Drawable = if (card.isReserved!!) {
             view.resources.getDrawable(R.drawable.ic_check)
         } else {
             view.resources.getDrawable(R.drawable.ic_circle_cross)
         }
         view.findViewById<ImageView>(R.id.isReserved).setImageDrawable(drawable)
-        view.findViewById<TextView>(R.id.collectorNumber).text = card.collectorNumber
-        view.findViewById<TextView>(R.id.edhrecRank).text = card.edhrecRank.toString()
+        view.findViewById<TextView>(R.id.collectorNumber).text =
+            "Collector number : ${card.collectorNumber}"
+        view.findViewById<TextView>(R.id.edhrecRank).text =
+            "EDHREC rank : ${card.edhrecRank.toString()}"
+        view.findViewById<TextView>(R.id.cardSet).text = card.setName
     }
 
-    @SuppressLint("CheckResult")
+    @SuppressLint("CheckResult", "SetTextI18n")
     private fun setCardInformation() {
         Glide.with(view).load(card.imageUris?.get("art_crop")).centerCrop()
             .into(view.findViewById(R.id.imageArt))
         view.findViewById<TextView>(R.id.cardName).text = card.name
         view.findViewById<TextView>(R.id.cardTypeLine).text = card.typeLine
         view.findViewById<TextView>(R.id.manaCost).text = card.manaCost
-        view.findViewById<TextView>(R.id.convertedManaCost).text = card.convertedManaCost
+        view.findViewById<TextView>(R.id.convertedManaCost).text = "Cmc : ${card.convertedManaCost}"
         view.findViewById<TextView>(R.id.oracleText).text = card.oracleText
     }
 
