@@ -23,7 +23,7 @@
     <string name="username_taken_error">This username is already taken</string>
     <string name="log_in_error">Invalid credentials</string>
     <string name="default_card_placeholder">Surgical extraction</string>
-    <string name="default_card_set_placeholder">New Phyrexia</string>
+    <string name="default_card_set_placeholder">Modern Masters 2015</string>
     <string name="default_card_price_placeholder">0.94$</string>
     <string name="default_card_artist_placeholder">Steven Belledin</string>
     <string name="action_log_off">Log out</string>
@@ -33,4 +33,16 @@
     <string name="action_open">Open</string>
     <string name="action_close">Close</string>
     <string name="drawer_menu_whishlist">My wishlist</string>
+    <string name="default_cart_type_line">Instant</string>
+    <string name="default_mana_cost">Cost : {B/P}</string>
+    <string name="wishlist_button_description">Action to add this card to wishlist</string>
+    <string name="default_card_oracle_text">({B/P} can be paid with either {B} or 2 life.)\nChoose target card in a graveyard other than a basic land card. Search its owner\'s graveyard, hand, and library for any number of cards with the same name as that card and exile them. Then that player shuffles.</string>
+    <string name="default_card_release">Released on 2015–05-22</string>
+    <string name="default_converted_mana_cost">Cmc : 1.0</string>
+    <string name="legalities_title">Legalities</string>
+    <string name="collector_information_title">Collector information</string>
+    <string name="default_card_is_reserved">Reserved</string>
+    <string name="default_collector_number">Collector number : 99</string>
+    <string name="default_edhrec_rank">Edhrec rank : 13884</string>
+    <string name="default_legality">Modern</string>
 </resources>

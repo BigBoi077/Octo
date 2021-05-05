@@ -2,7 +2,7 @@ package cegepst.example.octo.models.base
 
 import com.google.gson.annotations.SerializedName
 
-class Card (
+class Card(
         @SerializedName("id") val id: String?,
         @SerializedName("name") val name: String?,
         @SerializedName("set") val set: String?,
@@ -19,5 +19,6 @@ class Card (
         @SerializedName("artist") val artist: String?,
         @SerializedName("edhrec_rank") val edhrecRank: Int?,
         @SerializedName("prices") val prices: HashMap<String, String>?,
-        @SerializedName("purchase_uris") val purchaseUris: HashMap<String, String>?
+        @SerializedName("purchase_uris") val purchaseUris: HashMap<String, String>?,
+        @SerializedName("collector_number") val collectorNumber: String?
 )
