@@ -15,5 +15,7 @@
     <color name="main_yellow">#F1D302</color>
     <color name="black">#020100</color>
     <color name="white">#FDFFFC</color>
+    <color name="grey">#D3D4D9</color>
     <color name="success_green">#83c486</color>
+    <color name="dark_grey">#6A6A6E</color>
 </resources>

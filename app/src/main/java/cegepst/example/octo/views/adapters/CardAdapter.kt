@@ -1,5 +1,6 @@
 package cegepst.example.octo.views.adapters
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -22,11 +23,12 @@ class CardAdapter(private val cards: List<Card>) : RecyclerView.Adapter<CardAdap
         private val price = itemView.findViewById<TextView>(R.id.cardPrice)
         private val actionSingle = itemView.findViewById<ImageView>(R.id.actionSingleCard)
 
+        @SuppressLint("SetTextI18n")
         fun setContent(card: Card) {
             Glide.with(itemView).load(card.imageUris?.get("normal")).centerCrop().into(image)
             name.text = card.name
             set.text = card.setName
-            price.text = card.prices?.get("usd")
+            price.text = "${card.prices?.get("usd")}$"
             actionSingle.setOnClickListener {
                 val intent = Intent(itemView.context, SingleCardActivity::class.java)
                 intent.putExtra("cardId", card.id)

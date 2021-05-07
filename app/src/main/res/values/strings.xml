@@ -46,4 +46,10 @@
     <string name="default_edhrec_rank">Edhrec rank : 13884</string>
     <string name="default_legality">Modern</string>
     <string name="default_power">2</string>
+    <string name="wish_list_title">Add card to wish list</string>
+    <string name="wish_list_title_placeholder">"How many copies of Surgical Extraction would you like to add to your wish list ? "</string>
+    <string name="wish_list_quantity_input_place_holder">4</string>
+    <string name="total_wish_list_placeholder">107,96$</string>
+    <string name="action_confirm">Confirm</string>
+    <string name="action_deny">Cancel</string>
 </resources>

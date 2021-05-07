@@ -14,6 +14,7 @@ import cegepst.example.octo.models.base.Card
 import cegepst.example.octo.models.base.Legality
 import cegepst.example.octo.views.adapters.LegalityAdapter
 import com.bumptech.glide.Glide
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class SingleCardFragment : Fragment() {
 
@@ -44,6 +45,13 @@ class SingleCardFragment : Fragment() {
         setAdapter()
         setCardInformation()
         setCollectorInformation()
+        setAddWishListEvent()
+    }
+
+    private fun setAddWishListEvent() {
+        view.findViewById<FloatingActionButton>(R.id.actionAddWishlist).setOnClickListener {
+
+        }
     }
 
     @SuppressLint("UseCompatLoadingForDrawables", "SetTextI18n")
@@ -51,9 +59,9 @@ class SingleCardFragment : Fragment() {
         view.findViewById<TextView>(R.id.releaseDate).text = "Released on ${card.released}"
         view.findViewById<TextView>(R.id.cardSet).text = card.set
         view.findViewById<TextView>(R.id.collectorNumber).text =
-            "Collector number : ${card.collectorNumber}"
+                "Collector number : ${card.collectorNumber}"
         view.findViewById<TextView>(R.id.edhrecRank).text =
-            "EDHREC rank : ${card.edhrecRank.toString()}"
+                "EDHREC rank : ${card.edhrecRank.toString()}"
         view.findViewById<TextView>(R.id.cardSet).text = card.setName
     }
 
@@ -82,11 +90,15 @@ class SingleCardFragment : Fragment() {
         return LegalityAdapter(list as List<Legality>)
     }
 
+    private fun addToWishList() {
+
+    }
+
     companion object {
         @JvmStatic
         fun newInstance(card: Card) =
-            SingleCardFragment().apply {
-                this.card = card
-            }
+                SingleCardFragment().apply {
+                    this.card = card
+                }
     }
 }
