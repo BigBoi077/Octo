@@ -29,7 +29,7 @@ class LegalityAdapter(private val legalities: List<Legality>) :
                 itemView.resources.getDrawable(R.drawable.ic_circle_cross)
             }
             image.setImageDrawable(drawable)
-            name.text = legality.name
+            name.text = legality.name.capitalize()
         }
     }
 

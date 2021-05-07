@@ -1,12 +1,10 @@
 package cegepst.example.octo.views.fragments
 
 import android.annotation.SuppressLint
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -52,12 +50,6 @@ class SingleCardFragment : Fragment() {
     private fun setCollectorInformation() {
         view.findViewById<TextView>(R.id.releaseDate).text = "Released on ${card.released}"
         view.findViewById<TextView>(R.id.cardSet).text = card.set
-        val drawable: Drawable = if (card.isReserved!!) {
-            view.resources.getDrawable(R.drawable.ic_check)
-        } else {
-            view.resources.getDrawable(R.drawable.ic_circle_cross)
-        }
-        view.findViewById<ImageView>(R.id.isReserved).setImageDrawable(drawable)
         view.findViewById<TextView>(R.id.collectorNumber).text =
             "Collector number : ${card.collectorNumber}"
         view.findViewById<TextView>(R.id.edhrecRank).text =
