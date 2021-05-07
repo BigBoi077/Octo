@@ -5,12 +5,14 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import cegepst.example.octo.dao.UserDAO
+import cegepst.example.octo.dao.WishlistDAO
 import cegepst.example.octo.models.stored.User
 
 @Database(entities = [User::class], version = 1)
 abstract class AppStore : RoomDatabase() {
 
     abstract fun userDAO(): UserDAO
+    abstract fun wishListDAO(): WishlistDAO
 
     companion object {
         @Volatile

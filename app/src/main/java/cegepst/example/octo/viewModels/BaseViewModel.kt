@@ -1,12 +1,12 @@
 package cegepst.example.octo.viewModels
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
+import cegepst.example.octo.models.base.Card
+import cegepst.example.octo.models.stored.StoredCard
 import cegepst.example.octo.models.stored.User
 import cegepst.example.octo.services.ScryfallService
 import cegepst.example.octo.stores.AppStore
 import cegepst.example.octo.views.BaseActivity
-import com.google.gson.Gson
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -32,6 +32,13 @@ open class BaseViewModel: ViewModel() {
             withContext(Dispatchers.Main) {
                 lambda(user)
             }
+        }
+    }
+
+    fun insertCard(id: Long, card: Card, totalPrice: Double, quantity: Int) {
+        val storedCard = StoredCard(1, id, card.name!!, quantity, totalPrice)
+        GlobalScope.launch {
+            database.wishListDAO().insert(storedCard)
         }
     }
 }

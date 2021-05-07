@@ -13,6 +13,7 @@ import cegepst.example.octo.R
 import cegepst.example.octo.models.base.Card
 import cegepst.example.octo.models.base.Legality
 import cegepst.example.octo.views.adapters.LegalityAdapter
+import cegepst.example.octo.views.dialogs.WishListDialog
 import com.bumptech.glide.Glide
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
@@ -22,6 +23,7 @@ class SingleCardFragment : Fragment() {
     private lateinit var card: Card
     private lateinit var legalityAdapter: LegalityAdapter
     private lateinit var recyclerView: RecyclerView
+    private lateinit var lambda: (Card, Double, Int) -> Unit
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,7 +52,8 @@ class SingleCardFragment : Fragment() {
 
     private fun setAddWishListEvent() {
         view.findViewById<FloatingActionButton>(R.id.actionAddWishlist).setOnClickListener {
-
+            val dialog = WishListDialog(card, lambda, this.context!!)
+            dialog.show()
         }
     }
 
@@ -90,15 +93,12 @@ class SingleCardFragment : Fragment() {
         return LegalityAdapter(list as List<Legality>)
     }
 
-    private fun addToWishList() {
-
-    }
-
     companion object {
         @JvmStatic
-        fun newInstance(card: Card) =
+        fun newInstance(card: Card, lambda: (Card, Double, Int) -> Unit) =
                 SingleCardFragment().apply {
                     this.card = card
+                    this.lambda = lambda
                 }
     }
 }

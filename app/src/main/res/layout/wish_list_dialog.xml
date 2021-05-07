@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/grey"
     android:orientation="vertical">
 
     <TextView
@@ -24,19 +23,20 @@
         android:fontFamily="sans-serif-condensed"
         android:text="@string/wish_list_title_placeholder"
         android:textAlignment="center"
-        android:textSize="16sp" />
+        android:textSize="20sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:orientation="horizontal"
+        android:gravity="center"
         android:paddingStart="72dp"
         android:paddingEnd="52dp">
 
         <EditText
             android:id="@+id/inputNbrCopies"
-            android:layout_width="wrap_content"
+            android:layout_width="108dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:ems="10"
@@ -45,10 +45,11 @@
 
         <TextView
             android:id="@+id/totalPrice"
-            android:layout_width="match_parent"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/total_wish_list_placeholder"
+            android:textSize="16sp"
             android:textAlignment="center" />
 
     </LinearLayout>
@@ -61,13 +62,15 @@
         android:orientation="horizontal">
 
         <Button
+            android:id="@+id/actionConfirm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="108dp"
+            android:layout_marginEnd="88dp"
             android:backgroundTint="@color/dark_grey"
             android:text="@string/action_confirm" />
 
         <Button
+            android:id="@+id/actionCancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/pale_red"
