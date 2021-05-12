@@ -21,9 +21,9 @@ open class BaseActivity : AppCompatActivity() {
 
     internal lateinit var actionBarDrawerToggle: ActionBarDrawerToggle
     internal lateinit var user: User
-    private lateinit var viewModel: BaseViewModel
+    internal lateinit var viewModel: BaseViewModel
+    internal lateinit var database: AppStore
     private lateinit var editor: SharedPreferences
-    private lateinit var database: AppStore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

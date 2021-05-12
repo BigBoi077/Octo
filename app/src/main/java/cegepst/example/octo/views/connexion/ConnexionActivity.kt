@@ -10,13 +10,13 @@ import cegepst.example.octo.views.cards.MainActivity
 
 open class ConnexionActivity : BaseActivity() {
 
-    private lateinit var viewModel: ConnexionViewModel
+    internal lateinit var connexionViewModel: ConnexionViewModel
     internal lateinit var userInputs: HashMap<String, String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        this.viewModel =  ViewModelProvider(this).get(ConnexionViewModel::class.java)
-        this.viewModel.initialize(this)
+        this.connexionViewModel = ViewModelProvider(this).get(ConnexionViewModel::class.java)
+        this.connexionViewModel.initialize(this)
         this.userInputs = HashMap()
     }
 
@@ -24,7 +24,7 @@ open class ConnexionActivity : BaseActivity() {
         if (isValidForm()) {
             logUser()
         } else {
-            alert(viewModel.signUpError)
+            alert(connexionViewModel.signUpError)
         }
     }
 
@@ -32,7 +32,7 @@ open class ConnexionActivity : BaseActivity() {
         if (isValidForm()) {
             registerUser()
         } else {
-            alert(viewModel.signUpError)
+            alert(connexionViewModel.signUpError)
         }
     }
 
@@ -48,7 +48,7 @@ open class ConnexionActivity : BaseActivity() {
         )
         val saveUser = { user: User -> saveUserLogin(user) }
         val logUser = { log() }
-        viewModel.log(user, saveUser, logUser)
+        connexionViewModel.log(user, saveUser, logUser)
     }
 
     private fun registerUser() {
@@ -63,7 +63,7 @@ open class ConnexionActivity : BaseActivity() {
         )
         val save = { value: User -> saveUserLogin(value) }
         val proceed = { proceed() }
-        viewModel.register(user, save, proceed)
+        connexionViewModel.register(user, save, proceed)
 
     }
 

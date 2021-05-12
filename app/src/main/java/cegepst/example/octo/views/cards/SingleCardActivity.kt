@@ -23,20 +23,15 @@ class SingleCardActivity : FeedActivity(), NavigationView.OnNavigationItemSelect
 
     private fun getSingleCard() {
         val lambda = { card: Card -> initializeFragment(card) }
-        viewModel.fetchSingleCard(intent.getStringExtra("cardId"), lambda)
+        feedViewModel.fetchSingleCard(intent.getStringExtra("cardId"), lambda)
     }
 
     private fun initializeFragment(card: Card) {
-        val lambda = { card: Card,
-                       totalPrice: Double,
-                       quantity: Int ->
-            super.viewModel.insertCard(user.id, card, totalPrice, quantity)
-        }
         supportActionBar?.title = ""
         supportFragmentManager.beginTransaction()
                 .add(
                         R.id.singleCardContainer,
-                        SingleCardFragment.newInstance(card, lambda)
+                        SingleCardFragment.newInstance(card, super.viewModel)
                 )
                 .commit()
     }

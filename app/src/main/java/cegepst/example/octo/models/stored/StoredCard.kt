@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "cards")
+@Entity(tableName = "card")
 class StoredCard(
         @PrimaryKey(autoGenerate = false) val id: Long,
         @ColumnInfo(name = "user_id") val userId: Long,

@@ -23,8 +23,8 @@ class CommanderActivity : FeedActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     override fun fillFeed() {
-        viewModel.fetchCommanderCards()
-        viewModel.getCards().observe(this, {
+        feedViewModel.fetchCommanderCards()
+        feedViewModel.getCards().observe(this, {
             cards.clear()
             cards.addAll(it)
             adapter.notifyDataSetChanged()
@@ -45,7 +45,7 @@ class CommanderActivity : FeedActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     override fun actionLoad() {
-        viewModel.fetchCommanderCards()
+        feedViewModel.fetchCommanderCards()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

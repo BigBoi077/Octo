@@ -7,10 +7,13 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import androidx.core.widget.doAfterTextChanged
 import cegepst.example.octo.R
 import cegepst.example.octo.models.base.Card
+import cegepst.example.octo.viewModels.BaseViewModel
+import kotlin.math.roundToInt
 
-class WishListDialog(private val card: Card, lambda: (Card, Double, Int) -> Unit, context: Context) : Dialog(context) {
+class WishListDialog(private val card: Card, private val viewModel: BaseViewModel, context: Context) : Dialog(context) {
 
     private lateinit var input: EditText
     private lateinit var total: TextView
@@ -41,6 +44,27 @@ class WishListDialog(private val card: Card, lambda: (Card, Double, Int) -> Unit
     }
 
     private fun setActions() {
+        input.doAfterTextChanged {
+            this.calculateTotal()
+        }
+        cancel.setOnClickListener {
+            this.dismiss()
+        }
+        confirm.setOnClickListener {
+            val price = this.total.text.toString().toDouble()
+            val quantity = this.input.text.toString().toInt()
+            this.viewModel.insertCard(0, card, price, quantity)
+            this.dismiss()
+        }
+    }
 
+    private fun calculateTotal() {
+        try {
+            val quantity = input.text.toString().toInt()
+            val price = card.prices?.get("usd").toString().toDouble()
+            total.text = (quantity * price).roundToInt().toString()
+        } catch (ex: Exception) {
+            total.text = card.prices?.get("usd").toString()
+        }
     }
 }

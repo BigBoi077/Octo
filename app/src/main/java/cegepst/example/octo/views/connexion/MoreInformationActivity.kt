@@ -23,15 +23,15 @@ class MoreInformationActivity : ConnexionActivity() {
     private lateinit var guildSpinner: Spinner
     private lateinit var currentChosenColor: String
     private lateinit var currentChosenGuild: String
-    private lateinit var viewModel: ConnexionViewModel
+    private lateinit var moreInformationViewModel: ConnexionViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val callback = {}
         super.getUser(callback)
         this.currentChosenColor = COLORLESS
-        this.viewModel = ViewModelProvider(this).get(ConnexionViewModel::class.java)
-        this.viewModel.initialize(this)
+        this.moreInformationViewModel = ViewModelProvider(this).get(ConnexionViewModel::class.java)
+        this.moreInformationViewModel.initialize(this)
         setContentView(R.layout.activity_more_information)
         removeActionBar()
         populateSpinner()
@@ -63,7 +63,7 @@ class MoreInformationActivity : ConnexionActivity() {
         this.currentChosenGuild = guildSpinner.selectedItem.toString()
         user = User(user.id, user.firstname, user.lastname, user.username, user.password, currentChosenColor, currentChosenGuild)
         val lambda = { proceed() }
-        this.viewModel.update(user, lambda)
+        this.moreInformationViewModel.update(user, lambda)
     }
 
     private fun proceed() {

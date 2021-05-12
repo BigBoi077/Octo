@@ -3,9 +3,6 @@ package cegepst.example.octo.views.cards
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.TextView
-import androidx.drawerlayout.widget.DrawerLayout
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import cegepst.example.octo.R
 import cegepst.example.octo.interfaces.IFeedActivity
 import cegepst.example.octo.views.FeedActivity
@@ -33,8 +30,8 @@ class MainActivity : FeedActivity(), NavigationView.OnNavigationItemSelectedList
 
     override fun fillFeed() {
         val callback = { name: String -> setArtistTitle(name) }
-        viewModel.fetchRandomCards(callback)
-        viewModel.getCards().observe(this, {
+        feedViewModel.fetchRandomCards(callback)
+        feedViewModel.getCards().observe(this, {
             cards.clear()
             cards.addAll(it)
             adapter.notifyDataSetChanged()
@@ -50,7 +47,7 @@ class MainActivity : FeedActivity(), NavigationView.OnNavigationItemSelectedList
     }
 
     override fun actionLoad() {
-        viewModel.fetchRandomCards()
+        feedViewModel.fetchRandomCards()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

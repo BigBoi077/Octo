@@ -19,7 +19,7 @@ import com.google.android.material.navigation.NavigationView
 open class FeedActivity : BaseActivity() {
 
     internal lateinit var menu: NavigationView
-    internal lateinit var viewModel: FeedViewModel
+    internal lateinit var feedViewModel: FeedViewModel
     internal lateinit var cards: ArrayList<Card>
     internal lateinit var adapter: CardAdapter
     internal lateinit var drawerLayout: DrawerLayout
@@ -31,7 +31,7 @@ open class FeedActivity : BaseActivity() {
     }
 
     private fun initialize() {
-        viewModel = ViewModelProvider(this).get(FeedViewModel::class.java)
+        feedViewModel = ViewModelProvider(this).get(FeedViewModel::class.java)
         cards = ArrayList()
         adapter = CardAdapter(cards)
     }
