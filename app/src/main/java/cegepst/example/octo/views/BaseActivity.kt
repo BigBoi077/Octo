@@ -1,5 +1,6 @@
 package cegepst.example.octo.views
 
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Toast
@@ -9,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import cegepst.example.octo.models.stored.User
 import cegepst.example.octo.stores.AppStore
 import cegepst.example.octo.viewModels.BaseViewModel
+import cegepst.example.octo.views.connexion.LogInActivity
 
 const val PREF_APP = "app"
 const val PREF_USERNAME = "username"
@@ -55,6 +57,8 @@ open class BaseActivity : AppCompatActivity() {
 
     fun disconnectUser() {
         this.editor.edit().clear().apply()
+        val intent = Intent(this, LogInActivity::class.java)
+        startActivity(intent)
     }
 
     fun saveUserLogin(user: User) {

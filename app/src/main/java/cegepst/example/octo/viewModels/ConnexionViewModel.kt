@@ -75,17 +75,27 @@ class ConnexionViewModel: ViewModel() {
         }
     }
 
-    fun log(user: User, actionLog: () -> Unit) {
+    private fun getUser(username: String, saveUser: (User) -> Unit, logUser: () -> Unit) {
+        GlobalScope.launch {
+            val user = database.userDAO().getByUsername(username)
+            withContext(Dispatchers.Main) {
+                saveUser(user)
+                logUser()
+            }
+        }
+    }
+
+    fun log(user: User, saveUser: (User) -> Unit, logUser: () -> Unit) {
         database.userDAO().getByUsernamePassword(user.username, user.password)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribeBy(
-                onSuccess = {
-                    actionLog()
-                },
-                onError = {
-                    activity.alert(logInError)
-                }
-            )
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeBy(
+                        onSuccess = {
+                            getUser(user.username, saveUser, logUser)
+                        },
+                        onError = {
+                            activity.alert(logInError)
+                        }
+                )
     }
 }

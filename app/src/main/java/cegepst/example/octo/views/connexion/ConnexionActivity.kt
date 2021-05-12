@@ -38,16 +38,17 @@ open class ConnexionActivity : BaseActivity() {
 
     private fun logUser() {
         val user = User(
-            0,
-            "",
-            "",
-            userInputs["username"]!!,
-            userInputs["password"]!!,
-            "",
-            ""
+                0,
+                "",
+                "",
+                userInputs["username"]!!,
+                userInputs["password"]!!,
+                "",
+                ""
         )
+        val saveUser = { user: User -> saveUserLogin(user) }
         val logUser = { log() }
-        viewModel.log(user, logUser)
+        viewModel.log(user, saveUser, logUser)
     }
 
     private fun registerUser() {
