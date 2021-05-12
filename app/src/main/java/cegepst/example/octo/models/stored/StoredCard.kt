@@ -10,5 +10,6 @@ class StoredCard(
         @ColumnInfo(name = "user_id") val userId: Long,
         @ColumnInfo(name = "card_name") val cardName: String,
         @ColumnInfo(name = "quantity") val quantity: Int,
-        @ColumnInfo(name = "total") val total: Double
+        @ColumnInfo(name = "total") val total: Double,
+        @ColumnInfo(name = "purchase_link") val purchaseLink: String
 )

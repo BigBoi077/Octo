@@ -52,4 +52,6 @@
     <string name="total_wish_list_placeholder">107,96$</string>
     <string name="action_confirm">Confirm</string>
     <string name="action_deny">Cancel</string>
+    <string name="default_card_quantity">4</string>
+    <string name="action_buy_card_description">Click this icon to launch the website to buy this card</string>
 </resources>
