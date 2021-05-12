@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import cegepst.example.octo.R
 import cegepst.example.octo.models.base.Card
 import cegepst.example.octo.models.base.Legality
+import cegepst.example.octo.models.stored.User
 import cegepst.example.octo.viewModels.BaseViewModel
 import cegepst.example.octo.views.adapters.LegalityAdapter
 import cegepst.example.octo.views.dialogs.WishListDialog
@@ -22,6 +23,7 @@ class SingleCardFragment : Fragment() {
 
     internal lateinit var view: View
     private lateinit var card: Card
+    private lateinit var user: User
     private lateinit var legalityAdapter: LegalityAdapter
     private lateinit var recyclerView: RecyclerView
     private lateinit var viewModel: BaseViewModel
@@ -53,7 +55,7 @@ class SingleCardFragment : Fragment() {
 
     private fun setAddWishListEvent() {
         view.findViewById<FloatingActionButton>(R.id.actionAddWishlist).setOnClickListener {
-            val dialog = WishListDialog(card, viewModel, this.context!!)
+            val dialog = WishListDialog(card, viewModel, this.context!!, user)
             dialog.show()
         }
     }
@@ -96,10 +98,11 @@ class SingleCardFragment : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance(card: Card, viewModel: BaseViewModel) =
+        fun newInstance(card: Card, viewModel: BaseViewModel, user: User) =
                 SingleCardFragment().apply {
                     this.card = card
                     this.viewModel = viewModel
+                    this.user = user
                 }
     }
 }

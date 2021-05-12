@@ -10,10 +10,10 @@ import android.widget.TextView
 import androidx.core.widget.doAfterTextChanged
 import cegepst.example.octo.R
 import cegepst.example.octo.models.base.Card
+import cegepst.example.octo.models.stored.User
 import cegepst.example.octo.viewModels.BaseViewModel
-import kotlin.math.roundToInt
 
-class WishListDialog(private val card: Card, private val viewModel: BaseViewModel, context: Context) : Dialog(context) {
+class WishListDialog(private val card: Card, private val viewModel: BaseViewModel, context: Context, private val user: User) : Dialog(context) {
 
     private lateinit var input: EditText
     private lateinit var total: TextView
@@ -51,9 +51,15 @@ class WishListDialog(private val card: Card, private val viewModel: BaseViewMode
             this.dismiss()
         }
         confirm.setOnClickListener {
+            val quantity: Int
+            if (input.text.isNullOrBlank()) {
+                quantity = 1
+            } else {
+                quantity = this.input.text.toString().toInt()
+            }
+            calculateTotal()
             val price = this.total.text.toString().toDouble()
-            val quantity = this.input.text.toString().toInt()
-            this.viewModel.insertCard(0, card, price, quantity)
+            this.viewModel.insertCard(user.id, card, price, quantity)
             this.dismiss()
         }
     }
@@ -62,9 +68,11 @@ class WishListDialog(private val card: Card, private val viewModel: BaseViewMode
         try {
             val quantity = input.text.toString().toInt()
             val price = card.prices?.get("usd").toString().toDouble()
-            total.text = (quantity * price).roundToInt().toString()
+            total.text = String.format("%.2f", quantity * price)
         } catch (ex: Exception) {
             total.text = card.prices?.get("usd").toString()
         }
     }
+
+
 }

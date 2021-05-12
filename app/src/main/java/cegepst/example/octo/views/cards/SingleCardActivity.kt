@@ -31,7 +31,7 @@ class SingleCardActivity : FeedActivity(), NavigationView.OnNavigationItemSelect
         supportFragmentManager.beginTransaction()
                 .add(
                         R.id.singleCardContainer,
-                        SingleCardFragment.newInstance(card, super.viewModel)
+                        SingleCardFragment.newInstance(card, super.viewModel, super.user)
                 )
                 .commit()
     }

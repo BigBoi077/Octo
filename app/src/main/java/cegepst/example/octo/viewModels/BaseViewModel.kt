@@ -36,7 +36,7 @@ open class BaseViewModel: ViewModel() {
     }
 
     fun insertCard(id: Long, card: Card, totalPrice: Double, quantity: Int) {
-        val storedCard = StoredCard(1, id, card.name!!, quantity, totalPrice)
+        val storedCard = StoredCard(0, id, card.name!!, quantity, totalPrice)
         GlobalScope.launch {
             database.wishListDAO().insert(storedCard)
         }
