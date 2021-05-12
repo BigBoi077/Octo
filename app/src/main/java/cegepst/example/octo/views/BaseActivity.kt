@@ -1,17 +1,14 @@
 package cegepst.example.octo.views
 
 import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import cegepst.example.octo.models.stored.User
 import cegepst.example.octo.stores.AppStore
 import cegepst.example.octo.viewModels.BaseViewModel
-import com.google.android.material.navigation.NavigationView
 
 const val PREF_APP = "app"
 const val PREF_USERNAME = "username"
@@ -41,7 +38,7 @@ open class BaseActivity : AppCompatActivity() {
     }
 
     fun removeActionBar() {
-        supportActionBar?.hide();
+        supportActionBar?.hide()
     }
 
     fun alert(message: String) {
@@ -57,7 +54,7 @@ open class BaseActivity : AppCompatActivity() {
     }
 
     fun disconnectUser() {
-        // TODO : flush all local info
+        this.editor.edit().clear().apply()
     }
 
     fun saveUserLogin(user: User) {

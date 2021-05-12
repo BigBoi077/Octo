@@ -30,11 +30,6 @@ interface ScryfallService {
         @Path("id") cardId: String?
     ): Call<Card>
 
-    @GET("${CARD_ENDPOINT}/${RANDOM_ENDPOINT}")
-    fun getSingleCommanderCard(
-        @Query("q") flag: String
-    ): Call<Card>
-
     @GET("${CATALOG_ENDPOINT}/${ARTIST_ENDPOINT}")
     fun getRandomArtist(): Call<ResultArtist>
 

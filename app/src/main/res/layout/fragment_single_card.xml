@@ -4,8 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingStart="24dp"
-    android:paddingEnd="24dp"
     tools:context=".views.fragments.SingleCardFragment">
 
     <ScrollView
@@ -25,160 +23,169 @@
                 android:src="@drawable/ic_canvas"
                 tools:ignore="ContentDescription" />
 
-            <TextView
-                android:id="@+id/cardName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:fontFamily="sans-serif-condensed"
-                android:text="@string/default_card_placeholder"
-                android:textAlignment="center"
-                android:textSize="32sp" />
-
-            <TextView
-                android:id="@+id/cardTypeLine"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                android:fontFamily="sans-serif-condensed"
-                android:text="@string/default_cart_type_line"
-                android:textAlignment="center"
-                android:textSize="24sp" />
-
-            <View
-                android:layout_width="374dp"
-                android:layout_height="1dp"
-                android:layout_gravity="center"
-                android:layout_marginBottom="16dp"
-                android:background="@android:color/darker_gray" />
-
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:orientation="horizontal"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp">
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingStart="24dp"
+                android:paddingEnd="24dp">
 
                 <TextView
-                    android:id="@+id/manaCost"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="@string/default_mana_cost"
+                    android:id="@+id/cardName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:fontFamily="sans-serif-condensed"
+                    android:text="@string/default_card_placeholder"
                     android:textAlignment="center"
-                    android:textSize="18sp" />
+                    android:textSize="32sp" />
 
                 <TextView
-                    android:id="@+id/convertedManaCost"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="@string/default_converted_mana_cost"
+                    android:id="@+id/cardTypeLine"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:fontFamily="sans-serif-condensed"
+                    android:text="@string/default_cart_type_line"
                     android:textAlignment="center"
-                    android:textSize="18sp" />
+                    android:textSize="24sp" />
 
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/oracleText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingStart="20dp"
-                android:paddingTop="8dp"
-                android:paddingEnd="20dp"
-                android:paddingBottom="8dp"
-                android:text="@string/default_card_oracle_text"
-                android:textSize="16sp" />
-
-            <View
-                android:layout_width="374dp"
-                android:layout_height="1dp"
-                android:layout_gravity="center"
-                android:layout_margin="8dp"
-                android:background="@android:color/darker_gray" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="525dp"
-                android:orientation="horizontal">
+                <View
+                    android:layout_width="374dp"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="16dp"
+                    android:background="@android:color/darker_gray" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:orientation="horizontal"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp">
 
                     <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:fontFamily="sans-serif-condensed"
-                        android:gravity="center"
-                        android:text="@string/legalities_title"
-                        android:textSize="24sp" />
+                        android:id="@+id/manaCost"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="@string/default_mana_cost"
+                        android:textAlignment="center"
+                        android:textSize="18sp" />
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/legalitiesList"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:layout_constrainedHeight="true"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                    <TextView
+                        android:id="@+id/convertedManaCost"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="@string/default_converted_mana_cost"
+                        android:textAlignment="center"
+                        android:textSize="18sp" />
 
                 </LinearLayout>
 
+                <TextView
+                    android:id="@+id/oracleText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="20dp"
+                    android:paddingTop="8dp"
+                    android:paddingEnd="20dp"
+                    android:paddingBottom="8dp"
+                    android:text="@string/default_card_oracle_text"
+                    android:textSize="16sp" />
+
+                <View
+                    android:layout_width="374dp"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="8dp"
+                    android:background="@android:color/darker_gray" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:layout_height="525dp"
+                    android:orientation="horizontal">
 
-                    <TextView
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:fontFamily="sans-serif-condensed"
-                        android:gravity="center"
-                        android:text="@string/collector_information_title"
-                        android:textSize="24sp" />
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/releaseDate"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:textAlignment="center"
-                        android:text="@string/default_card_release"
-                        android:textSize="18sp" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:fontFamily="sans-serif-condensed"
+                            android:gravity="center"
+                            android:text="@string/legalities_title"
+                            android:textSize="24sp" />
 
-                    <TextView
-                        android:id="@+id/cardSet"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:textAlignment="center"
-                        android:text="@string/default_card_set_placeholder"
-                        android:textSize="18sp" />
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/legalitiesList"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constrainedHeight="true"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                    <TextView
-                        android:id="@+id/collectorNumber"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:text="@string/default_collector_number"
-                        android:textAlignment="center"
-                        android:textSize="18sp" />
+                    </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/edhrecRank"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/default_edhrec_rank"
-                        android:textAlignment="center"
-                        android:textSize="18sp" />
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:fontFamily="sans-serif-condensed"
+                            android:gravity="center"
+                            android:text="@string/collector_information_title"
+                            android:textSize="24sp" />
+
+                        <TextView
+                            android:id="@+id/releaseDate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:text="@string/default_card_release"
+                            android:textAlignment="center"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/cardSet"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:text="@string/default_card_set_placeholder"
+                            android:textAlignment="center"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/collectorNumber"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:text="@string/default_collector_number"
+                            android:textAlignment="center"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/edhrecRank"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/default_edhrec_rank"
+                            android:textAlignment="center"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
