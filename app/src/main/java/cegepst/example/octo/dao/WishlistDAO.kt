@@ -8,7 +8,7 @@ import cegepst.example.octo.models.stored.StoredCard
 @Dao
 interface WishlistDAO {
 
-    @Query("SELECT * FROM card WHERE id=:id")
+    @Query("SELECT * FROM card WHERE user_id=:id")
     fun getAllCardsByUserId(id: Long): List<StoredCard>
 
     @Insert

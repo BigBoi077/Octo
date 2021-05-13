@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/octo_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.Octo">
-        <activity android:name=".views.cards.SingleCardActivity"></activity>
+        <activity android:name=".views.cards.WishListActivity"></activity>
+        <activity android:name=".views.cards.SingleCardActivity" />
         <activity android:name=".views.cards.CommanderActivity" />
         <activity android:name=".views.FeedActivity" />
         <activity android:name=".views.connexion.LogInActivity" />

@@ -14,7 +14,7 @@ import kotlinx.coroutines.withContext
 
 open class BaseViewModel: ViewModel() {
 
-    private lateinit var database: AppStore
+    internal lateinit var database: AppStore
     private lateinit var activity: BaseActivity
 
     internal val scryfallService by lazy {

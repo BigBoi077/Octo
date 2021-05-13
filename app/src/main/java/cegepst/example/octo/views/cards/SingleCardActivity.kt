@@ -9,6 +9,7 @@ import cegepst.example.octo.views.fragments.SingleCardFragment
 import com.google.android.material.navigation.NavigationView
 
 class SingleCardActivity : FeedActivity(), NavigationView.OnNavigationItemSelectedListener {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_single_card)

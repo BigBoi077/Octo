@@ -7,6 +7,13 @@ import cegepst.example.octo.models.base.Card
 import cegepst.example.octo.models.helpers.Formatter
 import cegepst.example.octo.models.results.CardResult
 import cegepst.example.octo.models.results.ResultArtist
+import cegepst.example.octo.models.stored.StoredCard
+import cegepst.example.octo.stores.AppStore
+import cegepst.example.octo.views.BaseActivity
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -19,39 +26,49 @@ class FeedViewModel: BaseViewModel() {
         return cards
     }
 
+    fun getWishList(id: Long, lambda: (List<StoredCard>) -> Unit, activity: BaseActivity) {
+        GlobalScope.launch {
+            super.database = AppStore(activity)
+            val cards = super.database.wishListDAO().getAllCardsByUserId(id)
+            withContext(Dispatchers.Main) {
+                lambda(cards)
+            }
+        }
+    }
+
     fun fetchSingleCard(cardId: String?, lambda: (Card) -> Unit) {
         scryfallService.getSingleCard(cardId)
-            .enqueue(object : Callback<Card> {
-                override fun onResponse(call: Call<Card>, response: Response<Card>) {
-                    val card = Card(
-                        response.body()?.id,
-                        response.body()?.name,
-                        response.body()?.set,
-                        response.body()?.released,
-                        response.body()?.imageUris,
-                        response.body()?.manaCost,
-                        response.body()?.convertedManaCost,
-                        response.body()?.oracleText,
-                        response.body()?.power,
-                        response.body()?.toughness,
-                        response.body()?.legalities,
-                        response.body()?.setName,
-                        response.body()?.rarity,
-                        response.body()?.artist,
-                        response.body()?.edhrecRank,
-                        response.body()?.prices,
-                        response.body()?.purchaseUris,
-                        response.body()?.collectorNumber,
-                        response.body()?.typeLine,
-                        response.body()?.isReserved
-                    )
-                    lambda(card)
-                }
+                .enqueue(object : Callback<Card> {
+                    override fun onResponse(call: Call<Card>, response: Response<Card>) {
+                        val card = Card(
+                                response.body()?.id,
+                                response.body()?.name,
+                                response.body()?.set,
+                                response.body()?.released,
+                                response.body()?.imageUris,
+                                response.body()?.manaCost,
+                                response.body()?.convertedManaCost,
+                                response.body()?.oracleText,
+                                response.body()?.power,
+                                response.body()?.toughness,
+                                response.body()?.legalities,
+                                response.body()?.setName,
+                                response.body()?.rarity,
+                                response.body()?.artist,
+                                response.body()?.edhrecRank,
+                                response.body()?.prices,
+                                response.body()?.purchaseUris,
+                                response.body()?.collectorNumber,
+                                response.body()?.typeLine,
+                                response.body()?.isReserved
+                        )
+                        lambda(card)
+                    }
 
-                override fun onFailure(call: Call<Card>, t: Throwable) {
-                    Log.d("LOADING FAILURE SINGLE CARD", t.message.toString())
-                }
-            })
+                    override fun onFailure(call: Call<Card>, t: Throwable) {
+                        Log.d("LOADING FAILURE SINGLE CARD", t.message.toString())
+                    }
+                })
     }
 
     fun fetchCardsByRandomColor() {
@@ -126,4 +143,6 @@ class FeedViewModel: BaseViewModel() {
         cards.value = list
         (cards.value as ArrayList<Card>).shuffle()
     }
+
+
 }

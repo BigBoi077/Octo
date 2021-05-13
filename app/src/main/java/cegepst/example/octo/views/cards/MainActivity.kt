@@ -42,9 +42,7 @@ class MainActivity : FeedActivity(), NavigationView.OnNavigationItemSelectedList
         super.initializeAdapter(this)
     }
 
-    override fun setScrollListener() {
-
-    }
+    override fun setScrollListener() {}
 
     override fun actionLoad() {
         feedViewModel.fetchRandomCards()

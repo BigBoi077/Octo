@@ -71,11 +71,11 @@ open class BaseActivity : AppCompatActivity() {
         editor.commit()
     }
 
-    private fun setUserInformation(user: User) {
-        this.user = user
+    internal fun getUserId(): Long {
+        return this.editor.getLong(PREF_USER_ID, 0)
     }
 
-    private fun getUserId(): Long {
-        return this.editor.getLong(PREF_USER_ID, 0)
+    private fun setUserInformation(user: User) {
+        this.user = user
     }
 }

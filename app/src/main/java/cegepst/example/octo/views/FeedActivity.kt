@@ -66,7 +66,7 @@ open class FeedActivity : BaseActivity() {
         supportActionBar?.title = ""
     }
 
-    fun initializeAdapter(activity: FeedActivity) {
+    fun initializeAdapter(activity: BaseActivity) {
         this.recyclerView = activity.findViewById(R.id.cardList)
         this.recyclerView.adapter = adapter
         this.recyclerView.layoutManager = LinearLayoutManager(this)
