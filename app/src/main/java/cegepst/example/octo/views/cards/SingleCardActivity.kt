@@ -28,11 +28,12 @@ class SingleCardActivity : FeedActivity(), NavigationView.OnNavigationItemSelect
     }
 
     private fun initializeFragment(card: Card) {
+        val alert = { message: String -> super.alert(message) }
         supportActionBar?.title = ""
         supportFragmentManager.beginTransaction()
                 .add(
                         R.id.singleCardContainer,
-                        SingleCardFragment.newInstance(card, super.viewModel, super.user)
+                        SingleCardFragment.newInstance(card, super.viewModel, super.user, alert)
                 )
                 .commit()
     }

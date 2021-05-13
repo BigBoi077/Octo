@@ -1,5 +1,6 @@
 package cegepst.example.octo.views.adapters
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.view.LayoutInflater
@@ -12,7 +13,7 @@ import cegepst.example.octo.R
 import cegepst.example.octo.models.stored.StoredCard
 
 
-class WishListAdapter(private val cards: List<StoredCard>) : RecyclerView.Adapter<WishListAdapter.ViewHolder>() {
+class WishListAdapter(private val cards: List<StoredCard>, private val alert: (String) -> Unit) : RecyclerView.Adapter<WishListAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
@@ -20,14 +21,19 @@ class WishListAdapter(private val cards: List<StoredCard>) : RecyclerView.Adapte
         private val quantity = itemView.findViewById<TextView>(R.id.cardQuantity)
         private val total = itemView.findViewById<TextView>(R.id.cardTotal)
         private val cart = itemView.findViewById<ImageView>(R.id.actionBuyCard)
+        private val trash = itemView.findViewById<ImageView>(R.id.actionTrashCard)
 
+        @SuppressLint("SetTextI18n")
         fun setContent(card: StoredCard) {
             name.text = card.cardName
             quantity.text = card.quantity.toString()
-            total.text = card.total.toString()
+            total.text = "${card.total}$"
             cart.setOnClickListener {
                 val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(card.purchaseLink))
                 itemView.context.startActivity(browserIntent)
+            }
+            trash.setOnClickListener {
+                deleteFromList(card.id)
             }
         }
     }
@@ -44,5 +50,18 @@ class WishListAdapter(private val cards: List<StoredCard>) : RecyclerView.Adapte
 
     override fun getItemCount(): Int {
         return cards.size
+    }
+
+    private fun deleteFromList(id: Long) {
+        var index = 0
+        for (card in cards) {
+            if (card.id == id) {
+                // TODO : remove from database
+                alert("Removed ${card.quantity} ${card.cardName} from your wish list.")
+                cards.drop(index)
+                return
+            }
+            index++
+        }
     }
 }

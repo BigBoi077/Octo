@@ -13,7 +13,7 @@ import cegepst.example.octo.models.base.Card
 import cegepst.example.octo.models.stored.User
 import cegepst.example.octo.viewModels.BaseViewModel
 
-class WishListDialog(private val card: Card, private val viewModel: BaseViewModel, context: Context, private val user: User) : Dialog(context) {
+class WishListDialog(private val card: Card, private val viewModel: BaseViewModel, context: Context, private val user: User, private val alert: (String) -> Unit) : Dialog(context) {
 
     private lateinit var input: EditText
     private lateinit var total: TextView
@@ -51,15 +51,15 @@ class WishListDialog(private val card: Card, private val viewModel: BaseViewMode
             this.dismiss()
         }
         confirm.setOnClickListener {
-            val quantity: Int
-            if (input.text.isNullOrBlank()) {
-                quantity = 1
+            val quantity: Int = if (input.text.isNullOrBlank()) {
+                1
             } else {
-                quantity = this.input.text.toString().toInt()
+                this.input.text.toString().toInt()
             }
             calculateTotal()
             val price = this.total.text.toString().toDouble()
             this.viewModel.insertCard(user.id, card, price, quantity)
+            this.alert("Added ${quantity} ${card.name} to your wishlist.")
             this.dismiss()
         }
     }

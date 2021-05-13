@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center"
@@ -11,6 +12,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:layout_marginEnd="12dp"
         android:fontFamily="sans-serif-condensed"
         android:text="@string/default_card_placeholder"
         android:textSize="24sp" />
@@ -30,10 +32,20 @@
         android:text="@string/default_card_price_placeholder" />
 
     <ImageView
+        android:id="@+id/actionTrashCard"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.25"
+        android:src="@drawable/ic_remove_circle"
+        android:tint="@color/pale_red"
+        tools:ignore="ContentDescription,UseAppTint" />
+
+
+    <ImageView
         android:id="@+id/actionBuyCard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/action_buy_card_description"
-        android:src="@drawable/ic_shopping_cart" />
+        android:src="@drawable/ic_shopping_cart"
+        tools:ignore="ContentDescription" />
 
 </LinearLayout>

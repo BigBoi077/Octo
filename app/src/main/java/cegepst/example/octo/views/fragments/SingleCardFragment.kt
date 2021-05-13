@@ -24,6 +24,7 @@ class SingleCardFragment : Fragment() {
     internal lateinit var view: View
     private lateinit var card: Card
     private lateinit var user: User
+    private lateinit var alert: (String) -> Unit
     private lateinit var legalityAdapter: LegalityAdapter
     private lateinit var recyclerView: RecyclerView
     private lateinit var viewModel: BaseViewModel
@@ -55,7 +56,7 @@ class SingleCardFragment : Fragment() {
 
     private fun setAddWishListEvent() {
         view.findViewById<FloatingActionButton>(R.id.actionAddWishlist).setOnClickListener {
-            val dialog = WishListDialog(card, viewModel, this.context!!, user)
+            val dialog = WishListDialog(card, viewModel, this.context!!, user, alert)
             dialog.show()
         }
     }
@@ -98,11 +99,12 @@ class SingleCardFragment : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance(card: Card, viewModel: BaseViewModel, user: User) =
+        fun newInstance(card: Card, viewModel: BaseViewModel, user: User, alert: (String) -> Unit) =
                 SingleCardFragment().apply {
                     this.card = card
-                    this.viewModel = viewModel
                     this.user = user
+                    this.viewModel = viewModel
+                    this.alert = alert
                 }
     }
 }

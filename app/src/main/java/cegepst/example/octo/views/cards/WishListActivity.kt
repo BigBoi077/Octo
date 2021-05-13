@@ -31,7 +31,8 @@ class WishListActivity : FeedActivity(), NavigationView.OnNavigationItemSelected
     }
 
     private fun initializeAdapter(cards: List<StoredCard>) {
-        this.wishListAdapter = WishListAdapter(cards)
+        val alert = { message: String -> super.alert(message) }
+        this.wishListAdapter = WishListAdapter(cards, alert)
         this.recyclerView = findViewById(R.id.cardList)
         this.recyclerView.adapter = this.wishListAdapter
         this.recyclerView.layoutManager = LinearLayoutManager(this)

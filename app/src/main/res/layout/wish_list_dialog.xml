@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:background="@color/ice_blue"
+        android:background="@color/grey"
         android:fontFamily="sans-serif-condensed"
         android:text="@string/wish_list_title"
         android:textAlignment="center"
