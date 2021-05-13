@@ -23,6 +23,7 @@ class SignUpActivity : ConnexionActivity() {
         userInputs["lastname"] = getTextInputValue(R.id.lastNameInput)
         userInputs["username"] = getTextInputValue(R.id.usernameInput)
         userInputs["password"] = getTextInputValue(R.id.passwordInput)
+        userInputs["email"] = getTextInputValue(R.id.emailInput)
     }
 
     private fun getTextInputValue(id: Int): String {

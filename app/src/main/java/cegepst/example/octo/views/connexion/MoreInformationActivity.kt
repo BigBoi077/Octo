@@ -7,16 +7,12 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.lifecycle.ViewModelProvider
 import cegepst.example.octo.R
+import cegepst.example.octo.models.helpers.*
 import cegepst.example.octo.models.stored.User
 import cegepst.example.octo.viewModels.ConnexionViewModel
 import cegepst.example.octo.views.cards.MainActivity
 
-private const val COLORLESS = "Colorless"
-private const val RED = "Red"
-private const val BLUE = "Blue"
-private const val BLACK = "Black"
-private const val WHITE = "White"
-private const val GREEN = "Green"
+
 
 class MoreInformationActivity : ConnexionActivity() {
 
@@ -61,7 +57,16 @@ class MoreInformationActivity : ConnexionActivity() {
 
     fun completeRegister(view: View) {
         this.currentChosenGuild = guildSpinner.selectedItem.toString()
-        user = User(user.id, user.firstname, user.lastname, user.username, user.password, currentChosenColor, currentChosenGuild)
+        user = User(
+            user.id,
+            user.firstname,
+            user.lastname,
+            user.username,
+            user.email,
+            user.password,
+            currentChosenColor,
+            currentChosenGuild
+        )
         val lambda = { proceed() }
         this.moreInformationViewModel.update(user, lambda)
     }

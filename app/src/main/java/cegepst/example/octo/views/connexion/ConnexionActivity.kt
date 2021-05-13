@@ -38,13 +38,14 @@ open class ConnexionActivity : BaseActivity() {
 
     private fun logUser() {
         val user = User(
-                0,
-                "",
-                "",
-                userInputs["username"]!!,
-                userInputs["password"]!!,
-                "",
-                ""
+            0,
+            "",
+            "",
+            userInputs["username"]!!,
+            "",
+            userInputs["password"]!!,
+            "",
+            ""
         )
         val saveUser = { user: User -> saveUserLogin(user) }
         val logUser = { log() }
@@ -57,6 +58,7 @@ open class ConnexionActivity : BaseActivity() {
             userInputs["firstname"]!!,
             userInputs["lastname"]!!,
             userInputs["username"]!!,
+            userInputs["email"]!!,
             userInputs["password"]!!,
             "",
             ""

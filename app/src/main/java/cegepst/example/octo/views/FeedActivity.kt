@@ -1,5 +1,6 @@
 package cegepst.example.octo.views
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
@@ -14,6 +15,7 @@ import cegepst.example.octo.models.base.Card
 import cegepst.example.octo.models.helpers.DrawerMenuManager
 import cegepst.example.octo.viewModels.FeedViewModel
 import cegepst.example.octo.views.adapters.CardAdapter
+import cegepst.example.octo.views.connexion.PersonalActivity
 import com.google.android.material.navigation.NavigationView
 
 open class FeedActivity : BaseActivity() {
@@ -47,6 +49,11 @@ open class FeedActivity : BaseActivity() {
             R.id.action_log_out -> {
                 super.disconnectUser()
                 true
+            }
+            R.id.action_personal_account -> {
+                val intent = Intent(this, PersonalActivity::class.java)
+                startActivity(intent)
+                return true
             }
             else -> super.onOptionsItemSelected(item)
         }

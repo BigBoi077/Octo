@@ -1,5 +1,6 @@
 package cegepst.example.octo.views.cards
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.TextView
@@ -59,6 +60,7 @@ class MainActivity : FeedActivity(), NavigationView.OnNavigationItemSelectedList
         return true
     }
 
+    @SuppressLint("SetTextI18n")
     private fun setArtistTitle(artistName: String) {
         val title = findViewById<TextView>(R.id.artistShowcase)
         title.text = "Today's chosen artist is : $artistName"

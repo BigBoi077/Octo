@@ -88,14 +88,24 @@ class ConnexionViewModel: ViewModel() {
     fun log(user: User, saveUser: (User) -> Unit, logUser: () -> Unit) {
         database.userDAO().getByUsernamePassword(user.username, user.password)
                 .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeBy(
-                        onSuccess = {
-                            getUser(user.username, saveUser, logUser)
-                        },
-                        onError = {
-                            activity.alert(logInError)
-                        }
-                )
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeBy(
+                onSuccess = {
+                    getUser(user.username, saveUser, logUser)
+                },
+                onError = {
+                    activity.alert(logInError)
+                }
+            )
+    }
+
+    fun getUserById(id: Long, callback: (User) -> Unit, activity: BaseActivity) {
+        GlobalScope.launch {
+            initialize(activity)
+            val user = database.userDAO().getById(id)
+            withContext(Dispatchers.Main) {
+                callback(user)
+            }
+        }
     }
 }
