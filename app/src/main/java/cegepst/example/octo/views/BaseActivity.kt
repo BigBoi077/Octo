@@ -22,7 +22,7 @@ open class BaseActivity : AppCompatActivity() {
     internal lateinit var actionBarDrawerToggle: ActionBarDrawerToggle
     internal lateinit var user: User
     internal lateinit var viewModel: BaseViewModel
-    internal lateinit var database: AppStore
+    private lateinit var database: AppStore
     private lateinit var editor: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
