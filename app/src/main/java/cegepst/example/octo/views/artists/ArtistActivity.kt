@@ -41,12 +41,6 @@ class ArtistActivity : FeedActivity(), NavigationView.OnNavigationItemSelectedLi
         webScraper.findArtists(callback)
     }
 
-    override fun initializeAdapter() {}
-
-    override fun setScrollListener() {}
-
-    override fun actionLoad() {}
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
             return true
@@ -65,4 +59,10 @@ class ArtistActivity : FeedActivity(), NavigationView.OnNavigationItemSelectedLi
         this.recyclerView.adapter = artistAdapter
         this.recyclerView.layoutManager = LinearLayoutManager(this)
     }
+
+    override fun initializeAdapter() {}
+
+    override fun setScrollListener() {}
+
+    override fun actionLoad() {}
 }
