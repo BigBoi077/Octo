@@ -2,6 +2,7 @@ package cegepst.example.octo.views.cards
 
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.TextView
 import cegepst.example.octo.R
 import cegepst.example.octo.interfaces.IFeedActivity
 import cegepst.example.octo.views.FeedActivity
@@ -11,6 +12,7 @@ class CommanderActivity : FeedActivity(), NavigationView.OnNavigationItemSelecte
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        findViewById<TextView>(R.id.artistShowcase).height = 0
         val callback = { initialize() }
         super.getUser(callback)
     }
@@ -41,7 +43,7 @@ class CommanderActivity : FeedActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     override fun initializeAdapter() {
-        super.initializeAdapter(this)
+        super.initializeAdapter(this, R.id.cardList)
     }
 
     override fun actionLoad() {

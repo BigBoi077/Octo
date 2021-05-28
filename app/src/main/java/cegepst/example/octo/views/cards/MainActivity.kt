@@ -40,7 +40,7 @@ class MainActivity : FeedActivity(), NavigationView.OnNavigationItemSelectedList
     }
 
     override fun initializeAdapter() {
-        super.initializeAdapter(this)
+        super.initializeAdapter(this, R.id.cardList)
     }
 
     override fun setScrollListener() {}

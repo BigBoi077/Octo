@@ -1,6 +1,5 @@
 package cegepst.example.octo.views.adapters
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,11 +7,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import cegepst.example.octo.R
-import cegepst.example.octo.models.helpers.Formatter
-import com.bumptech.glide.Glide
-import org.jsoup.Jsoup
+import cegepst.example.octo.models.base.Artist
 
-class ArtistAdapter(private val artists: List<String>) : RecyclerView.Adapter<ArtistAdapter.ViewHolder>() {
+class ArtistAdapter(private val artists: List<Artist>) : RecyclerView.Adapter<ArtistAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
@@ -20,15 +17,8 @@ class ArtistAdapter(private val artists: List<String>) : RecyclerView.Adapter<Ar
         private val name = itemView.findViewById<TextView>(R.id.artistName)
         private val button = itemView.findViewById<ImageView>(R.id.actionSearchArtist)
 
-        fun setContent(artistName: String) {
-            val dom = Jsoup.connect(Formatter.makeArtistLink(artistName)).get()
-            val div = dom.select(".five columns omega").first()
-            val img = div.children().first()
-            val link = img.absUrl("src")
-            Log.d("ARTIST LINK", link)
-            Glide.with(itemView).load(link).centerCrop().into(image)
-            name.text = artistName
-            // TODO : set on click listener for artist search
+        fun setContent(artist: Artist) {
+
         }
     }
 

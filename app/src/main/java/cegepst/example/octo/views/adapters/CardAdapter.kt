@@ -29,10 +29,11 @@ class CardAdapter(private val cards: List<Card>) : RecyclerView.Adapter<CardAdap
             name.text = card.name
             set.text = card.setName
             price.text = "${card.prices?.get("usd")}$"
+            image.setOnClickListener {
+                actionSingleCard(itemView, card)
+            }
             actionSingle.setOnClickListener {
-                val intent = Intent(itemView.context, SingleCardActivity::class.java)
-                intent.putExtra("cardId", card.id)
-                itemView.context.startActivity(intent)
+                actionSingleCard(itemView, card)
             }
         }
     }
@@ -49,5 +50,11 @@ class CardAdapter(private val cards: List<Card>) : RecyclerView.Adapter<CardAdap
 
     override fun getItemCount(): Int {
         return cards.size
+    }
+
+    private fun actionSingleCard(itemView: View, card: Card) {
+        val intent = Intent(itemView.context, SingleCardActivity::class.java)
+        intent.putExtra("cardId", card.id)
+        itemView.context.startActivity(intent)
     }
 }

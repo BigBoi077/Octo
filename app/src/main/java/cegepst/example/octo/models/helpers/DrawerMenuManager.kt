@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.view.MenuItem
 import cegepst.example.octo.R
+import cegepst.example.octo.views.artists.ArtistActivity
 import cegepst.example.octo.views.cards.CommanderActivity
 import cegepst.example.octo.views.cards.MainActivity
 import cegepst.example.octo.views.cards.WishListActivity
@@ -22,7 +23,7 @@ class DrawerMenuManager {
                     activity.startActivity(intent)
                 }
                 R.id.actionArtists -> {
-                    val intent = Intent(activity, MainActivity::class.java)
+                    val intent = Intent(activity, ArtistActivity::class.java)
                     activity.startActivity(intent)
                 }
                 R.id.actionPersonalWishList -> {
