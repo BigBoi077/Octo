@@ -30,7 +30,7 @@ class WebScraper(private val absoluteUrl: String) {
             val artPieces = ArrayList<ArtPiece>()
             val dom = Jsoup.connect(absoluteUrl).get()
             val profilePicDiv = dom.select(".omega").select("img")
-            val profilePic = profilePicDiv.attr("src")
+            var profilePic = profilePicDiv.attr("src")
             val items = dom.select(".quick_shop")
             for (item in items) {
                 artPieces.add(
@@ -40,6 +40,9 @@ class WebScraper(private val absoluteUrl: String) {
                         item.attr("data-feat-img")
                     )
                 )
+            }
+            if (!profilePic.contains("https:/")) {
+                profilePic = "https:/${profilePic}"
             }
             val artistShowcase = ArtistShowcase(artistName, artPieces, profilePic)
             withContext(Dispatchers.Main) {
