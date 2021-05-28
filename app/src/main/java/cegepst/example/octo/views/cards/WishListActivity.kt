@@ -32,7 +32,8 @@ class WishListActivity : FeedActivity(), NavigationView.OnNavigationItemSelected
 
     private fun initializeAdapter(cards: List<StoredCard>) {
         val alert = { message: String -> super.alert(message) }
-        this.wishListAdapter = WishListAdapter(cards, alert)
+        val delete = { userId: Long, cardId: Long -> super.viewModel.deleteCard(userId, cardId) }
+        this.wishListAdapter = WishListAdapter(cards, alert, delete, super.getUserId())
         this.recyclerView = findViewById(R.id.cardList)
         this.recyclerView.adapter = this.wishListAdapter
         this.recyclerView.layoutManager = LinearLayoutManager(this)

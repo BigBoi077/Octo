@@ -11,9 +11,16 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import cegepst.example.octo.R
 import cegepst.example.octo.models.stored.StoredCard
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 
-class WishListAdapter(private val cards: List<StoredCard>, private val alert: (String) -> Unit) : RecyclerView.Adapter<WishListAdapter.ViewHolder>() {
+class WishListAdapter(
+    private val cards: List<StoredCard>,
+    private val alert: (String) -> Unit,
+    private val delete: (Long, Long) -> Unit,
+    private val userId: Long
+) : RecyclerView.Adapter<WishListAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
@@ -26,8 +33,8 @@ class WishListAdapter(private val cards: List<StoredCard>, private val alert: (S
         @SuppressLint("SetTextI18n")
         fun setContent(card: StoredCard) {
             name.text = card.cardName
-            quantity.text = card.quantity.toString()
-            total.text = "${card.total}$"
+            quantity.text = "${card.quantity}X"
+            total.text = "Total:${card.total}$"
             cart.setOnClickListener {
                 val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(card.purchaseLink))
                 itemView.context.startActivity(browserIntent)
@@ -53,15 +60,16 @@ class WishListAdapter(private val cards: List<StoredCard>, private val alert: (S
     }
 
     private fun deleteFromList(id: Long) {
-        var index = 0
-        for (card in cards) {
+        for ((index, card) in cards.withIndex()) {
             if (card.id == id) {
-                // TODO : remove from database
+                GlobalScope.launch {
+                    delete(userId, card.id)
+                }
                 alert("Removed ${card.quantity} ${card.cardName} from your wish list.")
                 cards.drop(index)
                 return
             }
-            index++
         }
+        this.notifyDataSetChanged()
     }
 }

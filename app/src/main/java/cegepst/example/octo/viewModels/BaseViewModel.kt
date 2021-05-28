@@ -36,9 +36,16 @@ open class BaseViewModel: ViewModel() {
     }
 
     fun insertCard(id: Long, card: Card, totalPrice: Double, quantity: Int) {
-        val storedCard = StoredCard(0, id, card.name!!, quantity, totalPrice, card.purchaseUris!!["tcgplayer"]!!)
+        val storedCard =
+            StoredCard(0, id, card.name!!, quantity, totalPrice, card.purchaseUris!!["tcgplayer"]!!)
         GlobalScope.launch {
             database.wishListDAO().insert(storedCard)
+        }
+    }
+
+    fun deleteCard(userId: Long, cardId: Long) {
+        GlobalScope.launch {
+            database.wishListDAO().delete(userId, cardId)
         }
     }
 }

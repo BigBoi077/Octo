@@ -13,4 +13,7 @@ interface WishlistDAO {
 
     @Insert
     fun insert(card: StoredCard): Long
+
+    @Query("DELETE FROM card WHERE user_id=:userId AND id=:cardId")
+    fun delete(userId: Long, cardId: Long): Int
 }
