@@ -67,9 +67,9 @@ class WishListAdapter(
                 }
                 alert("Removed ${card.quantity} ${card.cardName} from your wish list.")
                 cards.drop(index)
+                this.notifyDataSetChanged()
                 return
             }
         }
-        this.notifyDataSetChanged()
     }
 }

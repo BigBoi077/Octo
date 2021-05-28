@@ -7,10 +7,12 @@ import cegepst.example.octo.models.stored.User
 import cegepst.example.octo.services.ScryfallService
 import cegepst.example.octo.stores.AppStore
 import cegepst.example.octo.views.BaseActivity
+import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.util.*
 
 open class BaseViewModel: ViewModel() {
 
@@ -46,6 +48,25 @@ open class BaseViewModel: ViewModel() {
     fun deleteCard(userId: Long, cardId: Long) {
         GlobalScope.launch {
             database.wishListDAO().delete(userId, cardId)
+        }
+    }
+
+    fun updateUserCredentials(inputs: HashMap<String, TextInputEditText>, oldUser: User) {
+        if (inputs["password"]?.text.toString().isEmpty()) {
+            inputs["password"]?.setText(oldUser.password)
+        }
+        GlobalScope.launch {
+            val newUser = User(
+                oldUser.id,
+                inputs["firstname"]?.text.toString(),
+                inputs["lastname"]?.text.toString(),
+                oldUser.username,
+                inputs["email"]?.text.toString(),
+                inputs["password"]?.text.toString(),
+                oldUser.favoriteGuild,
+                oldUser.favoriteColor
+            )
+            database.wishListDAO().update(newUser)
         }
     }
 }

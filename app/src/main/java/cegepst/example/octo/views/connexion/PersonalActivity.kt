@@ -1,6 +1,7 @@
 package cegepst.example.octo.views.connexion
 
 import android.os.Bundle
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import cegepst.example.octo.R
@@ -36,6 +37,7 @@ class PersonalActivity : ConnexionActivity() {
     }
 
     private fun setContent(user: User) {
+        this.user = user
         findViewById<TextView>(R.id.username).text = user.username
         personalInputs["firstname"]?.setText(user.firstname)
         personalInputs["lastname"]?.setText(user.lastname)
@@ -48,6 +50,10 @@ class PersonalActivity : ConnexionActivity() {
         )
         Glide.with(this).load(Gravatar(user.email).getUrl())
             .apply(RequestOptions.circleCropTransform()).centerCrop().into(gravatar)
+    }
+
+    fun actionChangeCredentials(view: View) {
+        super.viewModel.updateUserCredentials(this.personalInputs, user)
     }
 
     private fun getTextInput(id: Int): TextInputEditText {
