@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Octo</string>
     <string name="log_in_title">Log In</string>
     <string name="test">test</string>
@@ -19,7 +19,12 @@
     <string name="password_hint">*********</string>
     <string name="octo_logo_description">Octo log</string>
     <string name="more_information_question_color">Amongst the six colors of Magic, which do you prefer the most  personally ?</string>
-    <string name="colorless_mana_description">Eldrazi</string>
+    <string name="colorless_mana_description" tools:ignore="StringEscaping">The color of artifacts, Eldrazi and Sam's deck, yeah that one.</string>
+    <string name="red_mana_description">The color of fire and burn spells. Yeah just bolt the bird.</string>
+    <string name="blue_mana_description">The color of countering spells and making friends quit the game.</string>
+    <string name="green_mana_description">The color of making big creatures and swinging with them sideways.</string>
+    <string name="white_mana_description">The color of living your best game by casting cats and gaining life.</string>
+    <string name="black_mana_description">The color of self harm four gaining more resources than your enemies. Oh and there are demons to.</string>
     <string name="sign_up_error">Your sign up information\'s are invalid</string>
     <string name="username_taken_error">This username is already taken</string>
     <string name="log_in_error">Invalid credentials</string>

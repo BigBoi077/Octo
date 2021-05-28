@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -76,7 +74,7 @@
                         android:src="@drawable/ic_colorless_mana_symbol" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="200dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:layout_gravity="center"
@@ -105,11 +103,11 @@
                         android:src="@drawable/ic_red_mana_symbol" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="200dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:layout_gravity="center"
-                        android:text="@string/colorless_mana_description" />
+                        android:text="@string/red_mana_description" />
 
                     <RadioButton
                         android:id="@+id/red_mana"
@@ -134,11 +132,11 @@
                         android:src="@drawable/ic_blue_mana_symbol" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="200dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:layout_gravity="center"
-                        android:text="@string/colorless_mana_description" />
+                        android:text="@string/blue_mana_description" />
 
                     <RadioButton
                         android:id="@+id/blue_mana"
@@ -163,11 +161,11 @@
                         android:src="@drawable/ic_black_mana_symbol" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="200dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:layout_gravity="center"
-                        android:text="@string/colorless_mana_description" />
+                        android:text="@string/black_mana_description" />
 
                     <RadioButton
                         android:id="@+id/black_mana"
@@ -192,11 +190,11 @@
                         android:src="@drawable/ic_white_mana_symbol" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="200dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:layout_gravity="center"
-                        android:text="@string/colorless_mana_description" />
+                        android:text="@string/white_mana_description" />
 
                     <RadioButton
                         android:id="@+id/white_mana"
@@ -221,11 +219,11 @@
                         android:src="@drawable/ic_green_mana_symbol" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="200dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:layout_gravity="center"
-                        android:text="@string/colorless_mana_description" />
+                        android:text="@string/green_mana_description" />
 
                     <RadioButton
                         android:id="@+id/green_mana"

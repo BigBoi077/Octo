@@ -1,7 +1,10 @@
 package cegepst.example.octo.views.artists
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import cegepst.example.octo.R
@@ -53,6 +56,10 @@ class SingleArtistActivity : FeedActivity(), NavigationView.OnNavigationItemSele
         findViewById<TextView>(R.id.artistName).text = artistName
         Glide.with(this).load(artistShowcase.artistImageUrl).centerCrop()
             .into(findViewById(R.id.artistProfilePic))
+        findViewById<ImageView>(R.id.artistProfilePic).setOnClickListener {
+            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(this.artistUrl))
+            startActivity(browserIntent)
+        }
     }
 
     override fun initializeMenu() {

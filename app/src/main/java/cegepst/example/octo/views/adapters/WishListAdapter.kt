@@ -1,8 +1,6 @@
 package cegepst.example.octo.views.adapters
 
 import android.annotation.SuppressLint
-import android.content.Intent
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,10 +33,6 @@ class WishListAdapter(
             name.text = card.cardName
             quantity.text = "${card.quantity}X"
             total.text = "Total:${card.total}$"
-            cart.setOnClickListener {
-                val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(card.purchaseLink))
-                itemView.context.startActivity(browserIntent)
-            }
             trash.setOnClickListener {
                 deleteFromList(card.id)
             }

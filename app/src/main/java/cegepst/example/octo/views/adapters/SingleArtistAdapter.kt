@@ -1,5 +1,7 @@
 package cegepst.example.octo.views.adapters
 
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,6 +23,10 @@ class SingleArtistAdapter(private val artPieces: List<ArtPiece>) :
 
         fun setContent(artPiece: ArtPiece) {
             Glide.with(itemView).load("https:${artPiece.imageUrl}").centerCrop().into(image)
+            image.setOnClickListener {
+                val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(artPiece.imageUrl))
+                itemView.context.startActivity(browserIntent)
+            }
             name.text = artPiece.name
             description.text = artPiece.description
         }
